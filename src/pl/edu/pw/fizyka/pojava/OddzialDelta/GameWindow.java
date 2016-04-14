@@ -1,5 +1,7 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
+
+import java.awt.BorderLayout;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.util.concurrent.TimeUnit;
@@ -14,7 +16,7 @@ public class GameWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public GameWindow() throws HeadlessException {
-		// TODO Auto-generated constructor stub
+		this.setLayout(new BorderLayout());
 	}
 
 	public GameWindow(GraphicsConfiguration arg0) {
@@ -40,10 +42,12 @@ public class GameWindow extends JFrame {
 			planetSystem[2]=new CelestialBody(63, 0.015, 0, 350, 100, 20);
 		}
 		
-		GameMap testMap=new GameMap(planetSystem);	
+		GameMap testMap=new GameMap(planetSystem);
+		GameHUD testHUD=new GameHUD();
 		GameWindow okno=new GameWindow();
 		okno.setSize(1000, 800);
-		okno.setContentPane(testMap);
+		okno.add(testMap, BorderLayout.CENTER);
+		okno.add(testHUD, BorderLayout.SOUTH);
 		okno.setVisible(true);
 		try {
 			Thread.sleep(2000);
@@ -55,7 +59,7 @@ public class GameWindow extends JFrame {
 
 		while(collisionDetector==false){
 			GravityCalculator.computeAcceleration(planetSystem, 2);
-			okno.setContentPane(testMap);
+			
 			//System.out.println(planetSystem[1].getSpeedX());
 			for(int ii=0; ii<planetSystem.length; ii++){
 				for(int jj=0; jj<planetSystem.length; jj++){
@@ -69,7 +73,7 @@ public class GameWindow extends JFrame {
 			}
 		
 			try {
-				TimeUnit.NANOSECONDS.sleep(100);
+				TimeUnit.MICROSECONDS.sleep(1);
 			} 
 			catch (InterruptedException e) {
 				// TODO Auto-generated catch block
