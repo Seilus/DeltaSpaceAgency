@@ -1,5 +1,7 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.LayoutManager;
 import javax.swing.JPanel;
@@ -17,6 +19,10 @@ public class GameMap extends JPanel {
 	public GameMap(CelestialBody[] planetarySystem) {
 		// TODO Auto-generated constructor stub
 	planetSystem=planetarySystem;	
+	Dimension pref=new Dimension(1200, 510);
+	Dimension min=new Dimension(640, 480);
+	this.setPreferredSize(pref);
+	this.setMinimumSize(min);
 	}
 
 	public GameMap(LayoutManager arg0) {
@@ -35,7 +41,9 @@ public class GameMap extends JPanel {
 	}
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
+		setBackground(Color.BLACK);
 		for(int ii=0; ii<planetSystem.length; ii++){
+			g.setColor(Color.BLUE);
 			g.fillOval((int)planetSystem[ii].getX()-planetSystem[ii].getRadius(), (int)planetSystem[ii].getY()-planetSystem[ii].getRadius(), planetSystem[ii].getRadius()*2, planetSystem[ii].getRadius()*2);
 		}	
 	}

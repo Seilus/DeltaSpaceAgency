@@ -1,18 +1,21 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.LayoutManager;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 public class GameHUD extends JPanel {
 
@@ -22,26 +25,22 @@ public class GameHUD extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public GameHUD() {
-		this.setLayout(new GridLayout());
-		this.setBackground(Color.DARK_GRAY);
-		Image engineOff = null;
-		try {
-		    engineOff = ImageIO.read(new File("Untitled.png"));
-		}
-		catch (IOException e) {
-		}
-		BackgroundPanel engineToggle=new BackgroundPanel(engineOff, 0);
-		this.add(engineToggle);
-		ImageIcon engineOffIcon=new ImageIcon(engineOff);
-		//JButton engineToggle=new JButton();
-		
-		//engineToggle.setOpaque(false);
-		//engineToggle.setContentAreaFilled(false);
-		//engineToggle.setBorderPainted(false);
-		//engineToggle.setFocusPainted(false);
-		//Dimension minEngine=new Dimension(50, 50);
-		//engineToggle.setMinimumSize(minEngine);
-		this.add(engineToggle);
+		GridBagLayout HUDGrid=new GridBagLayout();
+		GridBagConstraints HUDC=new GridBagConstraints();
+		setLayout(HUDGrid);
+		HUDC.weightx=0.6;
+		HUDC.fill=GridBagConstraints.BOTH;
+		ShipStatus sStats=new ShipStatus();
+		HUDGrid.setConstraints(sStats, HUDC);
+		this.add(sStats);
+		HUDC.gridwidth=GridBagConstraints.REMAINDER;
+		HUDC.fill=GridBagConstraints.BOTH;
+		HUDC.weightx=0.4;
+		PlanetInfo pInfo=new PlanetInfo();
+		HUDGrid.setConstraints(pInfo, HUDC);
+		this.add(pInfo);
+		Dimension prefHUD=new Dimension(1200, 90);
+		this.setPreferredSize(prefHUD);
 	}
 
 	public GameHUD(LayoutManager arg0) {
