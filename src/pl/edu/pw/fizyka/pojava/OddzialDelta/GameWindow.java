@@ -63,7 +63,9 @@ public class GameWindow extends JFrame {
 			planetSystem[1]=new CelestialBody(1055, 0, 0, 350, 350, 65);
 			planetSystem[2]=new CelestialBody(63, 0.015, 0, 350, 100, 20);
 		}
-		
+		 MenuFrame t= new MenuFrame();
+		 t.setSize(640, 480); 
+			t.setVisible(true);	
 		GameMap testMap=new GameMap(planetSystem);
 		GameHUD testHUD=new GameHUD();
 		GameWindow okno=new GameWindow(testMap, testHUD);
