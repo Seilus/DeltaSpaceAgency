@@ -21,12 +21,15 @@ public class PlanetInfo extends JPanel {
 		setBackground(Color.DARK_GRAY);
 		JTextArea planetInfo=new JTextArea(4, 1);
 		planetInfo.setBackground(Color.BLACK);
+		planetInfo.setEditable(false);
 		Font shipFont = new Font("Verdana", Font.BOLD, 12);
 		planetInfo.setFont(shipFont);
 		planetInfo.setForeground(Color.WHITE);
 		planetInfo.setText("Name of nearest planet\nDistance to nearest planet\nX distance to planet\nY distance to planet\n ");
 		this.add(planetInfo);
 		ShipRadar radar=new ShipRadar();
+		Dimension radarPref=new Dimension(60, 60);
+		radar.setPreferredSize(radarPref);
 		this.add(radar);
 	}
 

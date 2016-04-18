@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.LayoutManager;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
@@ -37,8 +38,10 @@ public class ShipStatus extends JPanel {
 		throttle.setPreferredSize(prefSizeThrottle);
 		this.add(throttle);
 		//slider showing fuel left
+		JLabel fuelL=new JLabel("FUEL");
 		JSlider fuel=new JSlider(SwingConstants.HORIZONTAL, 0, 1000, 1000);
 		fuel.setBackground(Color.DARK_GRAY);
+		fuel.add(fuelL);
 		fuel.setEnabled(false);
 		this.add(fuel);
 		//box with ship information

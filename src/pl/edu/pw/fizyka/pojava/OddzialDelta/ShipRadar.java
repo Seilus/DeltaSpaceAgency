@@ -16,7 +16,8 @@ public class ShipRadar extends JPanel {
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
 		setBackground(Color.DARK_GRAY);
-		g.fillOval(0, 0, this.getWidth(), this.getHeight());
+		g.setColor(Color.GREEN);
+		g.fillOval(0, 0, getWidth(), getHeight());;
 	}
 	public ShipRadar() {
 		// TODO Auto-generated constructor stub

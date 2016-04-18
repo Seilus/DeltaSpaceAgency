@@ -3,13 +3,7 @@ package pl.edu.pw.fizyka.pojava.OddzialDelta;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.LayoutManager;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class Engine extends JPanel {
