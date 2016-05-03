@@ -69,6 +69,8 @@ public class GameWindow extends JFrame {
 		GameMap testMap=new GameMap(planetSystem);
 		GameHUD testHUD=new GameHUD();
 		GameWindow okno=new GameWindow(testMap, testHUD);
+		Ship Ship=new Ship();
+	
 		okno.setVisible(true);
 		try {
 			Thread.sleep(2000);
