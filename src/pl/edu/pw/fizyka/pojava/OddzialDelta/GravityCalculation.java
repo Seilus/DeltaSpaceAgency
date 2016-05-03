@@ -4,7 +4,7 @@ public class GravityCalculation{
 	static double gravConstantT=6.673*Math.pow(10, -8);
 	GravityCalculation(){	
 	}
-	public void computeGPlanets(CelestialBody[] planetSystem, int frequency){
+	public static void computeGPlanets(CelestialBody[] planetSystem, int frequency){
 		
 		for(int ii=0; ii<planetSystem.length; ii++){
 			double accXkmByS=0;
