@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 
-public class GameWindow extends JFrame {
+public class GameWindow extends JFrame implements KeyListener {
 
 	/**
 	 * 
@@ -41,6 +41,31 @@ public class GameWindow extends JFrame {
 		
 	}
 
+@Override
+    public void keyPressed(KeyEvent ke) {
+        int key = ke.getKeyCode(); 
+		switch(key) { 
+		case KeyEvent.VK_RIGHT: 
+		
+		break; 
+		case KeyEvent.VK_LEFT: 
+		
+			break; 
+		case KeyEvent.VK_UP: 
+
+			break; 
+		case KeyEvent.VK_DOWN: 
+		
+			break; 
+		} 
+	}
+	 @Override
+	    public void keyReleased(KeyEvent arg0) {}
+	 
+	    @Override
+	    public void keyTyped(KeyEvent arg0){}
+	    
+	    
 	public GameWindow(GraphicsConfiguration arg0) {
 		super(arg0);
 		// TODO Auto-generated constructor stub
@@ -63,10 +88,11 @@ public class GameWindow extends JFrame {
 			planetSystem[1]=new CelestialBody(1055, 0, 0, 350, 350, 65);
 			planetSystem[2]=new CelestialBody(63, 0.015, 0, 350, 100, 20);
 		}
+		Ship Ship= new Ship(10,2);
 		 MenuFrame t= new MenuFrame();
 		 t.setSize(640, 480); 
 			t.setVisible(true);	
-		GameMap testMap=new GameMap(planetSystem);
+		GameMap testMap=new GameMap(planetSystem,Ship);
 		GameHUD testHUD=new GameHUD();
 		GameWindow okno=new GameWindow(testMap, testHUD);
 		Ship Ship=new Ship();
@@ -81,7 +107,7 @@ public class GameWindow extends JFrame {
 		boolean collisionDetector=false;
 
 		while(collisionDetector==false){
-			GravityCalculator.computeAcceleration(planetSystem, 2);
+			GravityCalculation.computeGPlanets(planetSystem, 2);
 			testMap.repaint();
 			//System.out.println(planetSystem[1].getSpeedX());
 			for(int ii=0; ii<planetSystem.length; ii++){
