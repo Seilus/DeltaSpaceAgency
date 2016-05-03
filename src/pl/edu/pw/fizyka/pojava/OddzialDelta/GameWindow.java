@@ -70,7 +70,7 @@ public class GameWindow extends JFrame {
 		GameHUD testHUD=new GameHUD();
 		GameWindow okno=new GameWindow(testMap, testHUD);
 		Ship Ship=new Ship();
-	
+	        Ship.shipMovement(planetSystem);
 		okno.setVisible(true);
 		try {
 			Thread.sleep(2000);
