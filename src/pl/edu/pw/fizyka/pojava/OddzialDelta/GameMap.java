@@ -15,8 +15,8 @@ public class GameMap extends JPanel {
 	/*
 	private */
 	CelestialBody[] planetSystem;
-	
-	public GameMap(CelestialBody[] planetarySystem) {
+	Ship Ship;
+	public GameMap(CelestialBody[] planetarySystem,Ship Ship) {
 		// TODO Auto-generated constructor stub
 	planetSystem=planetarySystem;	
 	Dimension pref=new Dimension(1200, 510);
@@ -45,7 +45,8 @@ public class GameMap extends JPanel {
 		for(int ii=0; ii<planetSystem.length; ii++){
 			g.setColor(Color.BLUE);
 			g.fillOval((int)planetSystem[ii].getX()-planetSystem[ii].getRadius(), (int)planetSystem[ii].getY()-planetSystem[ii].getRadius(), planetSystem[ii].getRadius()*2, planetSystem[ii].getRadius()*2);
-		}	
+		}
+		g.fillOval(Ship.getX(),Ship.getY());
 	}
 	
 	
