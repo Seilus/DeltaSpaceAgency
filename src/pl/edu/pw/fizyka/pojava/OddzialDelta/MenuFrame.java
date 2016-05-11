@@ -21,9 +21,9 @@ public class MenuFrame extends JFrame {
 		setLayout(new GridLayout(4, 1));
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	     JPanel GamePanelTitle=new JPanel();
+	     JPanel GamePanelStartInstructions= new JPanel();
 	     JPanel GamePanelStart= new JPanel();
-	     JPanel P3= new JPanel();
-	     JPanel P4= new JPanel();
+	     JPanel GamePanelMissionSelectionAndSomeMore= new JPanel();
 	     
 	     GamePanelTitle.setBackground(Color.GRAY);
 	     GamePanelStartInstructions.setBackground(Color.GRAY);
