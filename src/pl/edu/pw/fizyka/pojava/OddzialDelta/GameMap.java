@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.LayoutManager;
+
 import javax.swing.JPanel;
 
 public class GameMap extends JPanel {
@@ -15,14 +16,24 @@ public class GameMap extends JPanel {
 	/*
 	private */
 	CelestialBody[] planetSystem;
-	
-	public GameMap(CelestialBody[] planetarySystem) {
+	Ship rocket;
+	int heightBefore;
+	int widthBefore;
+	int heightAfter;
+	int widthAfter;
+	public GameMap(CelestialBody[] planetarySystem, Ship rocket) {
 		// TODO Auto-generated constructor stub
-	planetSystem=planetarySystem;	
-	Dimension pref=new Dimension(1200, 510);
-	Dimension min=new Dimension(640, 480);
-	this.setPreferredSize(pref);
-	this.setMinimumSize(min);
+		planetSystem=planetarySystem;	
+		Dimension pref=new Dimension(1200, 510);
+		Dimension min=new Dimension(640, 480);
+		this.setPreferredSize(pref);
+		this.setMinimumSize(min);
+		heightBefore=this.getHeight();
+		widthBefore=this.getWidth();
+		heightAfter=0;
+		widthAfter=0;
+		this.rocket=rocket;
+
 	}
 
 	public GameMap(LayoutManager arg0) {
@@ -39,13 +50,17 @@ public class GameMap extends JPanel {
 		super(layout, isDoubleBuffered);
 		// TODO Auto-generated constructor stub
 	}
+
+	
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
 		setBackground(Color.BLACK);
 		for(int ii=0; ii<planetSystem.length; ii++){
 			g.setColor(Color.BLUE);
-			g.fillOval((int)planetSystem[ii].getX()-planetSystem[ii].getRadius(), (int)planetSystem[ii].getY()-planetSystem[ii].getRadius(), planetSystem[ii].getRadius()*2, planetSystem[ii].getRadius()*2);
-		}	
+			g.fillOval((int)planetSystem[ii].getX()-planetSystem[ii].getRadius()+this.getWidth()/2, (int)planetSystem[ii].getY()-planetSystem[ii].getRadius()+this.getHeight()/2, planetSystem[ii].getRadius()*2, planetSystem[ii].getRadius()*2);
+		}
+		g.setColor(Color.RED);
+		g.fillOval(this.getWidth()/2-2, this.getHeight()/2-2, 4, 4);
 	}
 	
 	

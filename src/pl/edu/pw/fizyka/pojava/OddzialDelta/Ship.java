@@ -1,5 +1,9 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 public class Ship{
 	private int shipMassT;
 	private float fuelMassT;
@@ -14,14 +18,46 @@ public class Ship{
 	double accYkmBySGrav;
 	//pomiędzy 0 a 1000
 	private int throttleValue;
+	private boolean toggleEngine;
 	public Ship(double speedX, double speedY){
 		shipMassT=300;
 		fuelMassT=700;
-		forceOfEngineN=70000;
+		forceOfEngineN=0000;
 		speedXkmByS=speedX;
 		speedYkmByS=speedY;
-		positionXkm=GameMap.WIDTH/2;
-		positionYkm=GameMap.HEIGHT/2;
+		positionXkm=0;
+		positionYkm=0;
+		KeyListener shipControls=new KeyAdapter() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char typed=e.getKeyChar();
+				if(typed=='w'){
+					throttleValue+=5;
+				}
+				else if(typed=='a'){
+					turningAngle+=5;
+					if(turningAngle==360){
+						turningAngle=0;
+					}
+				}
+				else if(typed=='d'){
+					turningAngle-=5;
+					if(turningAngle==-360){
+						turningAngle=0;
+					}
+				}
+				else if(typed=='s'){
+					if(throttleValue<6){
+						throttleValue=0;
+					}
+					else{
+						throttleValue-=5;
+					}
+				}
+			}
+			
+		};
 	}
 	
 	public int getThrottleValue(){
@@ -35,6 +71,9 @@ public class Ship{
 	public void burnFuel(){
 		
 	}
+	public double getSpeedX(){
+		return speedXkmByS;
+	}
 	
 	public double getPosX(){
 		return positionXkm;
@@ -42,6 +81,12 @@ public class Ship{
 	
 	public double getPosY(){
 		return positionYkm;
+	}
+	public void setPosX(double X){
+		positionXkm=X;
+	}
+	public void setPosY(double Y){
+		positionYkm=Y;
 	}
 	
 	public float getMass(){

@@ -4,7 +4,7 @@ public class GravityCalculation{
 	static double gravConstantT=6.673*Math.pow(10, -8);
 	GravityCalculation(){	
 	}
-	public void computeGPlanets(CelestialBody[] planetSystem, int frequency){
+	public static void computeGPlanets(CelestialBody[] planetSystem, int frequency){
 		
 		for(int ii=0; ii<planetSystem.length; ii++){
 			double accXkmByS=0;
@@ -21,14 +21,16 @@ public class GravityCalculation{
 			planetSystem[ii].movementY(accYkmByS/frequency, frequency);
 		}
 	}
-	public void computeGShip(CelestialBody[] planetSystem, int frequency, Ship rocket){
+	public static void computeGShip(CelestialBody[] planetSystem, int frequency, Ship rocket){
 		double accXkmByS=0;
 		double accYkmByS=0;
 		for(int jj=0; jj<planetSystem.length; jj++){
 			double distanceRkm=Math.sqrt(Math.pow(planetSystem[jj].getX()-rocket.getPosX(),2)+Math.pow(planetSystem[jj].getY()-rocket.getPosY(), 2));
 			if(distanceRkm!=0){
+				
 				accXkmByS+=gravConstantT*rocket.getMass()*(planetSystem[jj].getX()-rocket.getPosX())/Math.pow(distanceRkm, 3);
 				accYkmByS+=gravConstantT*rocket.getMass()*(planetSystem[jj].getY()-rocket.getPosY())/Math.pow(distanceRkm, 3);
+				
 			}
 		}
 		rocket.accXkmBySGrav=accXkmByS;

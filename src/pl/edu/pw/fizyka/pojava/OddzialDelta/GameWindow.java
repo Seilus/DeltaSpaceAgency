@@ -59,14 +59,15 @@ public class GameWindow extends JFrame {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		CelestialBody[] planetSystem=new CelestialBody[3];{
-			planetSystem[0]=new CelestialBody(42, 0, 0.018, 600, 350, 25);
-			planetSystem[1]=new CelestialBody(1055, 0, 0, 350, 350, 65);
-			planetSystem[2]=new CelestialBody(63, 0.015, 0, 350, 100, 20);
+			planetSystem[0]=new CelestialBody(42, 0, 0.018, 300, -100, 25);
+			planetSystem[1]=new CelestialBody(9005500, 0, 0, 200, -100, 65);
+			planetSystem[2]=new CelestialBody(60, 0.15, 0, -100, -300, 20);
 		}
-		 MenuFrame t= new MenuFrame();
-		 t.setSize(640, 480); 
-			t.setVisible(true);	
-		GameMap testMap=new GameMap(planetSystem);
+		MenuFrame t= new MenuFrame();
+		t.setSize(640, 480); 
+		t.setVisible(true);
+		Ship rocket=new Ship(0, 0);
+		GameMap testMap=new GameMap(planetSystem, rocket);
 		GameHUD testHUD=new GameHUD();
 		GameWindow okno=new GameWindow(testMap, testHUD);
 		okno.setVisible(true);
@@ -76,17 +77,22 @@ public class GameWindow extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//rocket.setPosX(testMap.getWidth()/2);
+		//rocket.setPosY(testMap.getHeight()/2);
 		boolean collisionDetector=false;
 
 		while(collisionDetector==false){
-			GravityCalculator.computeAcceleration(planetSystem, 2);
+			GravityCalculation.computeGPlanets(planetSystem, 5);
+			GravityCalculation.computeGShip(planetSystem, 5, rocket);
+			rocket.shipMovement(planetSystem, 5);
 			testMap.repaint();
-			//System.out.println(planetSystem[1].getSpeedX());
 			for(int ii=0; ii<planetSystem.length; ii++){
+				System.out.println(planetSystem[ii].getX()+", "+planetSystem[ii].getY());
 				for(int jj=0; jj<planetSystem.length; jj++){
 					if(jj!=ii){
 						if(Math.sqrt(Math.pow((planetSystem[jj].getX())-(planetSystem[ii].getX()), 2)+Math.pow((planetSystem[jj].getY())-(planetSystem[ii].getY()), 2))<=((planetSystem[jj].getRadius())+(planetSystem[ii].getRadius()))){
 							collisionDetector=true;
+
 						}	
 							
 					}
@@ -94,7 +100,7 @@ public class GameWindow extends JFrame {
 			}
 		
 			try {
-				TimeUnit.MICROSECONDS.sleep(1);
+				TimeUnit.MILLISECONDS.sleep(1);
 			} 
 			catch (InterruptedException e) {
 				// TODO Auto-generated catch block
