@@ -3,7 +3,7 @@ package pl.edu.pw.fizyka.pojava.OddzialDelta;
 public class CelestialBody {
 
 	
-	private int massKiloTonnes;
+	private double massT;
 	//prędkości i położenia początkowe; składowa X i Y
 	private double speedXkmBys;
 	private double speedYkmBys;
@@ -13,14 +13,14 @@ public class CelestialBody {
 	private int radiuskm;
 	
 	CelestialBody(){
-		massKiloTonnes=0;
+		massT=0;
 		speedXkmBys=0;
 		speedYkmBys=0;
 		positionXkm=0;
 		positionYkm=0;
 	}
-	CelestialBody(int initMass, double initSpeedX, double initSpeedY, int initPosX, int initPosY, int radius){
-		massKiloTonnes=initMass;
+	CelestialBody(double initMass, double initSpeedX, double initSpeedY, int initPosX, int initPosY, int radius){
+		massT=initMass;
 		speedXkmBys=initSpeedX;
 		speedYkmBys=initSpeedY;
 		positionXkm=initPosX;
@@ -35,6 +35,12 @@ public class CelestialBody {
 	public double getY(){
 		return positionYkm;
 	}
+	public void changeX(double posX){
+		this.positionXkm+=posX;
+	}
+	public void changeY(double posY){
+		this.positionYkm+=posY;
+	}
 	//zwraca prędkość X
 	public double getSpeedX(){
 		return speedXkmBys;	
@@ -44,19 +50,19 @@ public class CelestialBody {
 		return speedYkmBys;
 	}	
 	//zwraca masę
-	public int getMass(){
-		return massKiloTonnes;
+	public double getMass(){
+		return massT;
 	}
 	//zwraca promień ciała
 	public int getRadius(){
 		return radiuskm;
 	}
 	//zmiana położenia i prędkości
-	public void changeX(double speedChangeX, int frequency){
+	public void movementX(double speedChangeX, int frequency){
 		speedXkmBys+=speedChangeX;
 		positionXkm+=speedXkmBys/frequency;	
 	}
-	public void changeY(double speedChangeY, int frequency){
+	public void movementY(double speedChangeY, int frequency){
 		speedYkmBys+=speedChangeY;
 		positionYkm+=speedYkmBys/frequency;
 	}

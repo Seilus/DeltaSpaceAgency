@@ -1,3 +1,5 @@
+package pl.edu.pw.fizyka.pojava.OddzialDelta;
+
 import java.awt.*;
 
 
@@ -9,53 +11,52 @@ import javax.swing.JPanel;
 
 public class MenuFrame extends JFrame {
 
-	public FrameG() throws HeadlessException{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	public MenuFrame() throws HeadlessException{
 		setLayout(new GridLayout(4, 1));
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-	     JPanel P1=new JPanel();
-	     JPanel P2= new JPanel();
-	     JPanel P3= new JPanel();
-	     JPanel P4= new JPanel();
+	     JPanel GamePanelTitle=new JPanel();
+	     JPanel GamePanelStartInstructions= new JPanel();
+	     JPanel GamePanelStart= new JPanel();
+	     JPanel GamePanelMissionSelectionAndSomeMore= new JPanel();
 	     
-	     P1.setBackground(Color.GRAY);
-	     P2.setBackground(Color.GRAY);
-	     P3.setBackground(Color.GRAY);
-	     P4.setBackground(Color.GRAY);
+	     GamePanelTitle.setBackground(Color.GRAY);
+	     GamePanelStartInstructions.setBackground(Color.GRAY);
+	     GamePanelStart.setBackground(Color.GRAY);
+	     GamePanelMissionSelectionAndSomeMore.setBackground(Color.GRAY);
 	     
-	     JLabel p1=new JLabel("Gra - symulacja układu słonecznego.");
-	     p1.setFont(new Font("Comic Sans", Font.BOLD, 20));	
-	     P1.add(p1);
+	     JLabel GameTitle=new JLabel("Gra - symulacja układu słonecznego.");
+	     GameTitle.setFont(new Font("Comic Sans", Font.BOLD, 20));	
+	     GamePanelTitle.add(GameTitle);
 	     
-	     JButton p2=new JButton("Start");
-         JLabel p3= new JLabel (" Naciśnij przycisk żeby rozpocząć");
-         p3.setFont(new Font("Comic Sans", Font.BOLD, 14));
-         P2.add(p3);
-	     P3.add(p2);
+	     JButton GameStartButton=new JButton("Start");
+         JLabel GameLabelStartInstructions= new JLabel (" Naciśnij przycisk żeby rozpocząć");
+         GameLabelStartInstructions.setFont(new Font("Comic Sans", Font.BOLD, 14));
+         GamePanelStartInstructions.add(GameLabelStartInstructions);
+	     GamePanelStart.add(GameStartButton);
 	     
-	     JLabel p5= new JLabel (" Wybierz misję");
-	     p5.setFont(new Font("Comic Sans", Font.BOLD, 14));
-	    JComboBox p4=new JComboBox();
-	    P4.add(p5);
-	    P4.add(p4);
+	     JLabel MissionSelection= new JLabel (" Wybierz misję");
+	     MissionSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	    JComboBox MissionComboBox=new JComboBox();
+	    GamePanelMissionSelectionAndSomeMore.add(MissionSelection);
+	    GamePanelMissionSelectionAndSomeMore.add(MissionComboBox);
 	    
-	    JLabel p6= new JLabel (" Wybierz język");
-	     p6.setFont(new Font("Comic Sans", Font.BOLD, 14));
-	    JComboBox p7=new JComboBox();
-	    P4.add(p6);
-	    P4.add(p7);
+	    JLabel LanguageSelection= new JLabel (" Wybierz język");
+	    LanguageSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	    JComboBox LanguageComboBox=new JComboBox();
+	    GamePanelMissionSelectionAndSomeMore.add(LanguageSelection);
+	    GamePanelMissionSelectionAndSomeMore.add(LanguageComboBox);
 	    
 	     
-	     this.add(P1);
-	     this.add(P2);
-	     this.add(P3);
-	     this.add(P4);
+	     this.add(GamePanelTitle);
+	     this.add(GamePanelStartInstructions);
+	     this.add(GamePanelStart);
+	     this.add(GamePanelMissionSelectionAndSomeMore);
 	     
 	}
-	
-	
-public static void main(String[] args) {
-	 FrameG t= new FrameG();
-	 t.setSize(640, 480); 
-		t.setVisible(true);	
-}
-}
+}	
