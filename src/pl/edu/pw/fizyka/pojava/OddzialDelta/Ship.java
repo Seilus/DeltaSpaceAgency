@@ -92,7 +92,10 @@ public class Ship{
 	public float getMass(){
 		return shipMassT+fuelMassT;
 	}
-	
+	public double changeAngle(double newAngle){
+		turningAngle+=newAngle;
+		 return turningAngle;
+	}
 	public void shipMovement(CelestialBody[] planetSystem, int frequency){
 		double accX=accXkmBySGrav+(forceOfEngineN/(this.getMass()*1000)*Math.cos(this.turningAngle)/frequency);
 		double accY=accYkmBySGrav+(forceOfEngineN/(this.getMass()*1000)*Math.sin(this.turningAngle)/frequency);
