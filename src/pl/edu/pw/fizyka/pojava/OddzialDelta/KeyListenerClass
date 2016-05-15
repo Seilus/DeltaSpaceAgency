@@ -1,0 +1,39 @@
+package pl.edu.pw.fizyka.pojava.OddzialDelta;
+
+
+
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.JFrame;
+public class KeyListenerClass extends JFrame implements KeyListener {
+
+private char c;
+public Ship s;
+public double newAngle;
+@Override
+public void keyPressed(KeyEvent evt) {
+	 c = evt.getKeyChar();
+	if(c =='w'){
+	
+}
+    if(c=='a'){
+    	newAngle+=5;
+    	s.changeAngle(newAngle);
+    }
+    if(c=='d'){
+    	newAngle-=5;
+    	s.changeAngle(newAngle);
+    }
+}
+@Override
+public void keyTyped(KeyEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void keyReleased(KeyEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+}
