@@ -18,6 +18,16 @@ public class MenuFrame extends JFrame {
 
 
 	public MenuFrame() throws HeadlessException{
+		
+		 ActionListener startListener = new ActionListener() {
+		        @Override
+		        public void actionPerformed(ActionEvent e) {
+		        	 setVisible(false);
+		        	 
+		        		}
+
+		    };
+		
 		setLayout(new GridLayout(4, 1));
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	     JPanel GamePanelTitle=new JPanel();
@@ -38,6 +48,7 @@ public class MenuFrame extends JFrame {
          JLabel GameLabelStartInstructions= new JLabel (" Naciśnij przycisk żeby rozpocząć");
          GameLabelStartInstructions.setFont(new Font("Comic Sans", Font.BOLD, 14));
          GamePanelStartInstructions.add(GameLabelStartInstructions);
+         GameStartButton.addActionListener(startListener);
 	     GamePanelStart.add(GameStartButton);
 	     
 	     JLabel MissionSelection= new JLabel (" Wybierz misję");
