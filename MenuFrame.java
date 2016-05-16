@@ -1,10 +1,14 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
 import java.awt.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,20 +18,25 @@ public class MenuFrame extends JFrame {
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 1L;
-
-
+	public  int clickedStart=0;
+	
 	public MenuFrame() throws HeadlessException{
+		
 		
 		 ActionListener startListener = new ActionListener() {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
 		        	 setVisible(false);
+		        	 GameWindow tt=new  GameWindow();
 		        	 
+		       		
 		        		}
 
 		    };
 		
+		    
 		setLayout(new GridLayout(4, 1));
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	     JPanel GamePanelTitle=new JPanel();
@@ -51,6 +60,8 @@ public class MenuFrame extends JFrame {
          GameStartButton.addActionListener(startListener);
 	     GamePanelStart.add(GameStartButton);
 	     
+	     
+	     
 	     JLabel MissionSelection= new JLabel (" Wybierz misję");
 	     MissionSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
 	    JComboBox MissionComboBox=new JComboBox();
@@ -63,11 +74,15 @@ public class MenuFrame extends JFrame {
 	    GamePanelMissionSelectionAndSomeMore.add(LanguageSelection);
 	    GamePanelMissionSelectionAndSomeMore.add(LanguageComboBox);
 	    
-	     
+	   
+	   
 	     this.add(GamePanelTitle);
 	     this.add(GamePanelStartInstructions);
 	     this.add(GamePanelStart);
 	     this.add(GamePanelMissionSelectionAndSomeMore);
 	     
+	  
+	     
 	}
+	
 }	
