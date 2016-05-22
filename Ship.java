@@ -18,7 +18,7 @@ public class Ship{
 	public Ship(double speedX, double speedY){
 		shipMassT=300;
 		fuelMassT=700;
-		forceOfEngineN=140000;
+		forceOfEngineN=200000;
 		speedXkmByS=speedX;
 		speedYkmByS=speedY;
 		engineToggle=false;
@@ -81,7 +81,7 @@ public class Ship{
 		if(turningAngleDeg>=360){
 			turningAngleDeg-=360;
 		}
-		else if(turningAngleDeg<=-360){
+		else if(turningAngleDeg<0){
 			turningAngleDeg+=360;
 		}
 	}
@@ -93,8 +93,7 @@ public class Ship{
 	public float getMass(){
 		return shipMassT+fuelMassT;
 	}
-	
-	
+
 	public void shipMovement(CelestialBody[] planetSystem, int frequency){
 		double accX=accXkmBySGrav;
 		double accY=accYkmBySGrav;
