@@ -12,7 +12,6 @@ public class EngineToggleListener implements ActionListener {
 	JButton button;
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 		if(rocket.getFuelMass()>0){
 			rocket.toggleEngine();
 			if(button.getBackground()==Color.RED){

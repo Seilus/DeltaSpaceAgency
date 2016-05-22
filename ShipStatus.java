@@ -31,12 +31,14 @@ public class ShipStatus extends JPanel {
 		this.rocket=rocket;
 		this.setLayout(new FlowLayout(0));
 		this.setBackground(Color.DARK_GRAY);
+		//adding the button to toggle engine on/off
 		JButton engineToggle=new JButton("ENGINE");
 		engineToggle.setBackground(Color.RED);
 		Font engineFont=new Font("Verdana", Font.BOLD, 12);
 		engineToggle.setFont(engineFont);
 		engineToggle.addActionListener(new EngineToggleListener(engineToggle, rocket));
 		Dimension prefButton=new Dimension(120, 90);
+		engineToggle.setMinimumSize(new Dimension(60, 45));
 		engineToggle.setPreferredSize(prefButton);
 		this.add(engineToggle);
 		//adding slider that lets the user change engine power
@@ -46,10 +48,10 @@ public class ShipStatus extends JPanel {
 		throttle.setPreferredSize(prefSizeThrottle);
 		this.add(throttle);
 		this.throttle=throttle;
+		
 		throttle.addChangeListener(new ChangeListener(){
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				// TODO Auto-generated method stub
 				rocket.setThrottleValue(throttle.getValue());
 			}
 		});
