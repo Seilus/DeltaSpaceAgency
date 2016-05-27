@@ -59,7 +59,9 @@ public class GameWindow extends JFrame  {
 		okno.addMouseListener(new MouseShipSteering(okno, rocket, testMap));
 		GameAnimation testAnim=new GameAnimation(planetSystem, rocket, testMap, shipStats);
 		GameStartListener startListener=new GameStartListener(okno, testAnim);
-		MenuFrame t= new MenuFrame(startListener);
+	        LanguageChooserListener languageListener= new LanguageChooserListener ();
+		MissionSelectionClass missionListener=new MissionSelectionClass();
+		MenuFrame t= new MenuFrame(startListener,languageListener,missionListener);
 		t.setSize(640, 480); 
 		t.setVisible(true);
 		
