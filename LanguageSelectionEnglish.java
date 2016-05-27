@@ -1,3 +1,4 @@
+package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
 public class LanguageSelectionEnglish {
 	String  menu[]=new String[4];
