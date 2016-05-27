@@ -1,5 +1,7 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
+
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,65 +13,79 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MenuFrame extends JFrame {
-
+	
+	 
+	 public int SelectedMission=-1;
+	 JButton GameStartButton;
+	 JLabel GameLabelStartInstructions, MissionSelection, LanguageSelection;
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	GameStartListener startListener;
 	
-	public MenuFrame(GameStartListener startListener) throws HeadlessException{
+	LanguageChooserListener languageListener; 
+	GameStartListener startListener;
+	MissionSelectionClass missionListener;
+	void setName(String menu[]){
+		GameStartButton.setText(menu[0]);
+		GameLabelStartInstructions.setText(menu[1]);
+		MissionSelection.setText(menu[2]);
+		LanguageSelection.setText(menu[3]);
+	}
+void setMission(int mission){
+		SelectedMission=mission;
+	}
+	public MenuFrame(GameStartListener startListener,LanguageChooserListener languageListener,MissionSelectionClass missionListener) throws HeadlessException{
 		setLayout(new GridLayout(4, 1));
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	     JPanel GamePanelTitle=new JPanel();
 	     this.startListener=startListener;
+	     this.languageListener=languageListener;
+	     this.languageListener.setMenuFrame(this);
 	     JPanel GamePanelStartInstructions= new JPanel();
 	     JPanel GamePanelStart= new JPanel();
 	     JPanel GamePanelMissionSelectionAndSomeMore= new JPanel();
 	     
-	     /*
-		 ActionListener startListener = new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					
-					
-				}
-		    };
-	     */
+	    
 	     GamePanelTitle.setBackground(Color.GRAY);
 	     GamePanelStartInstructions.setBackground(Color.GRAY);
 	     GamePanelStart.setBackground(Color.GRAY);
 	     GamePanelMissionSelectionAndSomeMore.setBackground(Color.GRAY);
 	     
-	     JLabel GameTitle=new JLabel("Gra - symulacja układu słonecznego.");
+	     
+	     JLabel GameTitle=new JLabel("DELTA Space Agency");
 	     GameTitle.setFont(new Font("Comic Sans", Font.BOLD, 20));	
 	     GamePanelTitle.add(GameTitle);
 	     
-	     JButton GameStartButton=new JButton("Start");
-         JLabel GameLabelStartInstructions= new JLabel (" Naciśnij przycisk żeby rozpocząć");
-         GameLabelStartInstructions.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	      GameStartButton=new JButton(languageListener.Langmenu[0]);
+	      GameLabelStartInstructions= new JLabel (languageListener.Langmenu[1]);
+       GameLabelStartInstructions.setFont(new Font("Comic Sans", Font.BOLD, 14));
          GamePanelStartInstructions.add(GameLabelStartInstructions);
-         GameStartButton.addActionListener(startListener);
+        GameStartButton.addActionListener(startListener);
 	     GamePanelStart.add(GameStartButton);
 	     
-	     JLabel MissionSelection= new JLabel (" Wybierz misję");
+	 
+	      MissionSelection= new JLabel (languageListener.Langmenu[2]);
 	     MissionSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
-	    JComboBox MissionComboBox=new JComboBox();
+	 
 	    GamePanelMissionSelectionAndSomeMore.add(MissionSelection);
-	    GamePanelMissionSelectionAndSomeMore.add(MissionComboBox);
+	    GamePanelMissionSelectionAndSomeMore.add(missionListener.MissionComboBox);
 	    
-	    JLabel LanguageSelection= new JLabel (" Wybierz język");
+	  
+	    LanguageSelection= new JLabel (languageListener.Langmenu[3]);
 	    LanguageSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
-	    JComboBox LanguageComboBox=new JComboBox();
+	  
 	    GamePanelMissionSelectionAndSomeMore.add(LanguageSelection);
-	    GamePanelMissionSelectionAndSomeMore.add(LanguageComboBox);
-	    
-	     
+	    GamePanelMissionSelectionAndSomeMore.add(languageListener.LanguageComboBox);
+	    languageListener.LanguageComboBox.addActionListener(languageListener);
+	    this.revalidate();
 	     this.add(GamePanelTitle);
 	     this.add(GamePanelStartInstructions);
 	     this.add(GamePanelStart);
 	     this.add(GamePanelMissionSelectionAndSomeMore);
 	     
+	    
 	}
 }	
+
