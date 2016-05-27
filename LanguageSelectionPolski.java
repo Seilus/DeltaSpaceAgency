@@ -1,3 +1,4 @@
+package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
 public class LanguageSelectionPolski {
 
@@ -8,9 +9,9 @@ public class LanguageSelectionPolski {
 		public LanguageSelectionPolski(){
 			
 		  menu[0]="Start";
-		 menu[1]="Naciœnij przycisk ¿eby rozpocz¹æ";
-	     menu[2]="Wybierz misjê";
-		menu[3]	= "Wybierz jêzyk";
+		 menu[1]="NaciÅ“nij przycisk Â¿eby rozpoczÂ¹Ã¦";
+	     menu[2]="Wybierz misjÃª";
+		menu[3]	= "Wybierz jÃªzyk";
 			
 		
 		 
