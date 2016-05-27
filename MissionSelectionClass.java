@@ -1,3 +1,5 @@
+package pl.edu.pw.fizyka.pojava.OddzialDelta;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
