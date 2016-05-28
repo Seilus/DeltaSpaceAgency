@@ -17,7 +17,10 @@ import javax.swing.JLabel;
 	 void setMenuFrame(MenuFrame menuFrame){
 			this.menuFrame=menuFrame;
 		}
-	 
+	 void setPlanetInfo(PlanetInfo planetInfo){
+			this.planetInfo=planetInfo;
+		}
+		PlanetInfo planetInfo;
 	 MenuFrame menuFrame;
 	
     	@Override
@@ -26,14 +29,14 @@ import javax.swing.JLabel;
 				
 				LanguageSelectionPolski t= new LanguageSelectionPolski();
 		    	menuFrame.setName(t.menu);
-		    
+		        planetInfo.setNamePlanet(t.game);
 			 }
 			
 			if(LanguageComboBox.getSelectedIndex()==1){
 				
 				LanguageSelectionEnglish t=new LanguageSelectionEnglish();
 				menuFrame.setName(t.menu);
-		  
+		                planetInfo.setNamePlanet(t.game);
 			 }
 			
 			}
