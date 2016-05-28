@@ -48,10 +48,11 @@ public class GameWindow extends JFrame  {
 			planetSystem[2]=new CelestialBody(100000, 0.025, 0, -100, -300, 20);
 		}
 		
+		LanguageChooserListener languageListener= new LanguageChooserListener ();
 		Ship rocket=new Ship(0, 0);
 		GameMap testMap=new GameMap(planetSystem, rocket);
 		ShipStatus shipStats=new ShipStatus(rocket);
-		GameHUD testHUD=new GameHUD(shipStats);
+		GameHUD testHUD=new GameHUD(shipStats, languageListener);
 		GameWindow okno=new GameWindow(testMap, testHUD, rocket);
 		KeyboardFocusManager shipKeyboardSteer= KeyboardFocusManager.getCurrentKeyboardFocusManager();
 		shipKeyboardSteer.addKeyEventDispatcher(new ShipSteeringKeyboard(rocket));
@@ -59,12 +60,13 @@ public class GameWindow extends JFrame  {
 		okno.addMouseListener(new MouseShipSteering(okno, rocket, testMap));
 		GameAnimation testAnim=new GameAnimation(planetSystem, rocket, testMap, shipStats);
 		GameStartListener startListener=new GameStartListener(okno, testAnim);
-	        LanguageChooserListener languageListener= new LanguageChooserListener ();
+		
 		MissionSelectionClass missionListener=new MissionSelectionClass();
 		HelpListener helpListener=new HelpListener();
 		MenuFrame t= new MenuFrame(startListener,languageListener,missionListener,helpListener);
 		t.setSize(640, 480); 
 		t.setVisible(true);
+
 		
 		//testAnim.animationStart();
 	}
