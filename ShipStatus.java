@@ -22,17 +22,29 @@ public class ShipStatus extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	JTextArea sInfo;
+	JTextArea sInfo,sInfoV,shipInfo;
 	JSlider throttle;
 	JSlider fuel;
 	Ship rocket;
+	JButton engineToggle;
 	
-	public ShipStatus(Ship rocket) {
+	LanguageChooserListener languageListener;
+	
+    void setNameShip(String game[]){
+    	sInfo.setText("\n"+game[1]+"\n"+game[2]+"\n"+game[3]+"\n"+game[4]+"\n");
+    	engineToggle.setText(game[0]);
+	}
+	LanguageSelectionEnglish tt= new LanguageSelectionEnglish();
+	
+	public ShipStatus(Ship rocket,LanguageChooserListener languageListener) {
+		this.languageListener=languageListener;
+	     this.languageListener.setShipStatus(this);
+		
 		this.rocket=rocket;
 		this.setLayout(new FlowLayout(0));
 		this.setBackground(Color.DARK_GRAY);
 		//adding the button to toggle engine on/off
-		JButton engineToggle=new JButton("ENGINE");
+	    engineToggle=new JButton(tt.game[0]);
 		engineToggle.setBackground(Color.RED);
 		Font engineFont=new Font("Verdana", Font.BOLD, 12);
 		engineToggle.setFont(engineFont);
@@ -65,19 +77,29 @@ public class ShipStatus extends JPanel {
 		this.add(fuel);
 		this.fuel=fuel;
 		//box with ship information
-		JTextArea shipInfo=new JTextArea(4, 1);
+	     shipInfo=new JTextArea(4, 1);
+		JTextArea shipInfoValues=new JTextArea(4,1);
 		shipInfo.setBackground(Color.BLACK);
 		shipInfo.setEditable(false);
 		Font shipFont = new Font("Verdana", Font.BOLD, 12);
 		shipInfo.setFont(shipFont);
 		shipInfo.setForeground(Color.WHITE);
-		shipInfo.setText("Ship speed:"+Math.sqrt(Math.pow(rocket.getSpeedX(), 2)+Math.pow(rocket.getSpeedY(), 2))+"km/s\nCurrent throttle:"+rocket.getThrottleValue()/10+"%\nCurrent ship mass:"+(int)rocket.getMass()+"t\nRemaining Fuel:"+rocket.getFuelMass()/7+"%");
+		shipInfo.setText("\n"+tt.game[1]+"\n"+tt.game[2]+"\n"+tt.game[3]+"\n"+tt.game[4]+"\n");
+		
+		shipInfoValues.setBackground(Color.BLACK);
+		shipInfoValues.setEditable(false);
+		shipInfoValues.setFont(shipFont);
+		shipInfoValues.setForeground(Color.WHITE);
+		
+		shipInfoValues.setText("\n"+Math.sqrt(Math.pow(rocket.getSpeedX(), 2)+Math.pow(rocket.getSpeedY(), 2))+"km/s\n"+rocket.getThrottleValue()/10+"%\n"+(int)rocket.getMass()+"t\n"+rocket.getFuelMass()/7+"%\n");
 		this.add(shipInfo);
+		this.add(shipInfoValues);
 		this.sInfo=shipInfo;
+		this.sInfoV=shipInfoValues;
 	}
 	
 	public void update(){
-		sInfo.setText("Ship speed:"+new DecimalFormat("#.##").format(Math.sqrt(Math.pow(rocket.getSpeedX(), 2)+Math.pow(rocket.getSpeedY(), 2)))+"km/s\nCurrent throttle:"+rocket.getThrottleValue()/10+"%\nCurrent ship mass:"+(int)rocket.getMass()+"t\nRemaining Fuel:"+rocket.getFuelMass()/7+"%");
+		sInfoV.setText("\n"+new DecimalFormat("#.##").format(Math.sqrt(Math.pow(rocket.getSpeedX(), 2)+Math.pow(rocket.getSpeedY(), 2)))+"km/s\n"+rocket.getThrottleValue()/10+"%\n"+(int)rocket.getMass()+"\n"+rocket.getFuelMass()/7+"%\n");
 		throttle.setValue(rocket.getThrottleValue());
 		fuel.setValue((int)(rocket.getFuelMass()*10));
 	}
