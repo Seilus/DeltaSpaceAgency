@@ -15,7 +15,7 @@ public class LanguageSelectionEnglish {
 		  missions[0]="Mission 1";
 		  missions[1]="Mission 2";
 		 
-		 game[0]="Engine";
+		 game[0]="ENGINE";
 		 game[1]="Ship speed";
 		 game[2]="Current throttle";
 		 game[3]="Current ship mass";
