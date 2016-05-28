@@ -11,9 +11,10 @@ public class GameHUD extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	public GameHUD(ShipStatus sStats) {
-		GridBagLayout HUDGrid=new GridBagLayout();
+	LanguageChooserListener languageListener;
+
+	public GameHUD(ShipStatus sStats, LanguageChooserListener languageListener) {
+				GridBagLayout HUDGrid=new GridBagLayout();
 		GridBagConstraints HUDC=new GridBagConstraints();
 		setLayout(HUDGrid);
 		HUDC.weightx=0.6;
@@ -24,7 +25,7 @@ public class GameHUD extends JPanel {
 		HUDC.gridwidth=GridBagConstraints.REMAINDER;
 		HUDC.fill=GridBagConstraints.BOTH;
 		HUDC.weightx=0.4;
-		PlanetInfo pInfo=new PlanetInfo();
+		PlanetInfo pInfo=new PlanetInfo(languageListener);
 		HUDGrid.setConstraints(pInfo, HUDC);
 		this.add(pInfo);
 		Dimension prefHUD=new Dimension(1200, 90);
