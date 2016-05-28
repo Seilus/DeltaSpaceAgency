@@ -15,11 +15,18 @@ public class PlanetInfo extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	public PlanetInfo() {
+	LanguageChooserListener languageListener;
+	JTextArea planetInfo;
+    void setNamePlanet(String game[]){
+		planetInfo.setText("\n"+game[5]+"\n"+game[6]+"\n"+game[7]+"\n"+game[8]+"\n");
+	}
+	public PlanetInfo(LanguageChooserListener languageListener) {
+		 this.languageListener=languageListener;
+	     this.languageListener.setPlanetInfo(this);
+		
 		setLayout(new FlowLayout(2));
 		setBackground(Color.DARK_GRAY);
-		JTextArea planetInfo=new JTextArea(4, 1);
+	    planetInfo=new JTextArea(4, 1);
 		planetInfo.setBackground(Color.BLACK);
 		planetInfo.setEditable(false);
 		Font shipFont = new Font("Verdana", Font.BOLD, 12);
@@ -49,3 +56,4 @@ public class PlanetInfo extends JPanel {
 	}
 
 }
+
