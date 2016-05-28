@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 
  public  class LanguageChooserListener implements ActionListener{
 	 public String Langmenu []=new String[5];
-	 public String[] Languages ={"polski","english"};
+	 public String[] Languages ={"english","polski"};
 	
 	 JComboBox LanguageComboBox=new JComboBox(Languages);
 	 JLabel test,test2;
@@ -20,23 +20,29 @@ import javax.swing.JLabel;
 	 void setPlanetInfo(PlanetInfo planetInfo){
 			this.planetInfo=planetInfo;
 		}
+	 void setShipStatus(ShipStatus shipStatus){
+		 this.shipStatus=shipStatus;
+	 }
 		PlanetInfo planetInfo;
-	 MenuFrame menuFrame;
+	    MenuFrame menuFrame;
+	    ShipStatus shipStatus;
 	
     	@Override
 		public void actionPerformed(ActionEvent e) {
 			 if(LanguageComboBox.getSelectedIndex()==0){
 				
-				LanguageSelectionPolski t= new LanguageSelectionPolski();
+				LanguageSelectionEnglish t= new LanguageSelectionEnglish();
 		    	menuFrame.setName(t.menu);
 		        planetInfo.setNamePlanet(t.game);
+		        shipStatus.setNameShip(t.game);
 			 }
 			
 			if(LanguageComboBox.getSelectedIndex()==1){
 				
-				LanguageSelectionEnglish t=new LanguageSelectionEnglish();
+				LanguageSelectionPolski t=new LanguageSelectionPolski();
 				menuFrame.setName(t.menu);
-		                planetInfo.setNamePlanet(t.game);
+		        planetInfo.setNamePlanet(t.game);
+		        shipStatus.setNameShip(t.game);
 			 }
 			
 			}
@@ -51,4 +57,5 @@ import javax.swing.JLabel;
 			 }
  }
 	
+
 
