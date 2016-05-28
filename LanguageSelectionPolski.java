@@ -15,7 +15,7 @@ public class LanguageSelectionPolski {
 		  menu[3]= "Wybierz język";
 		  menu[4]="Pomoc";
 			
-		 game[0]="Silnik";
+		 game[0]="SILNIK";
 		 game[1]="Predkosc statku";
 		 game[2]="Current throttle";
 		 game[3]="Aktualna masa statku";
