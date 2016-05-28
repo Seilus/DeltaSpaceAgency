@@ -11,14 +11,17 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class MenuFrame extends JFrame {
 	
 	 
 	 public int SelectedMission=-1;
-	 JButton GameStartButton;
+	 JButton GameStartButton, GameHelpButton;
 	 JLabel GameLabelStartInstructions, MissionSelection, LanguageSelection;
-	
+	 JPanel GameHelpOtherPanel;
+	 JFrame GameHelpFrame;
+	 JTextArea HelpText;
 	/**
 	 * 
 	 */
@@ -27,65 +30,93 @@ public class MenuFrame extends JFrame {
 	LanguageChooserListener languageListener; 
 	GameStartListener startListener;
 	MissionSelectionClass missionListener;
+	HelpListener helpListener;
+	
 	void setName(String menu[]){
 		GameStartButton.setText(menu[0]);
 		GameLabelStartInstructions.setText(menu[1]);
 		MissionSelection.setText(menu[2]);
 		LanguageSelection.setText(menu[3]);
+		GameHelpButton.setText(menu[4]);
 	}
 void setMission(int mission){
 		SelectedMission=mission;
 	}
-	public MenuFrame(GameStartListener startListener,LanguageChooserListener languageListener,MissionSelectionClass missionListener) throws HeadlessException{
-		setLayout(new GridLayout(4, 1));
+	public MenuFrame(GameStartListener startListener,LanguageChooserListener languageListener,MissionSelectionClass missionListener,HelpListener helpListener) throws HeadlessException{
+		setLayout(new GridLayout(5, 1));
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	     JPanel GamePanelTitle=new JPanel();
+	     
 	     this.startListener=startListener;
 	     this.languageListener=languageListener;
 	     this.languageListener.setMenuFrame(this);
+	     this.startListener.setMenuFrame(this);
+	     this.helpListener=helpListener;
+	     this.helpListener.setMenuFrame(this);
+	     
 	     JPanel GamePanelStartInstructions= new JPanel();
 	     JPanel GamePanelStart= new JPanel();
 	     JPanel GamePanelMissionSelectionAndSomeMore= new JPanel();
-	     
+	     JPanel GameHelp= new JPanel();
+	     GameHelpFrame=new JFrame();
+	     GameHelpOtherPanel = new JPanel();
+	     HelpText=new JTextArea();
 	    
 	     GamePanelTitle.setBackground(Color.GRAY);
 	     GamePanelStartInstructions.setBackground(Color.GRAY);
 	     GamePanelStart.setBackground(Color.GRAY);
 	     GamePanelMissionSelectionAndSomeMore.setBackground(Color.GRAY);
-	     
+	     GameHelp.setBackground(Color.LIGHT_GRAY);
 	     
 	     JLabel GameTitle=new JLabel("DELTA Space Agency");
 	     GameTitle.setFont(new Font("Comic Sans", Font.BOLD, 20));	
 	     GamePanelTitle.add(GameTitle);
 	     
 	      GameStartButton=new JButton(languageListener.Langmenu[0]);
+	      GameStartButton.setForeground(Color.DARK_GRAY);
+	      GameStartButton.setBackground(Color.LIGHT_GRAY);
+	      
 	      GameLabelStartInstructions= new JLabel (languageListener.Langmenu[1]);
-       GameLabelStartInstructions.setFont(new Font("Comic Sans", Font.BOLD, 14));
-         GamePanelStartInstructions.add(GameLabelStartInstructions);
-        GameStartButton.addActionListener(startListener);
-	     GamePanelStart.add(GameStartButton);
-	     
+          GameLabelStartInstructions.setFont(new Font("Comic Sans", Font.BOLD, 14));
+          GamePanelStartInstructions.add(GameLabelStartInstructions);
+          GameStartButton.addActionListener(startListener);
+	      GamePanelStart.add(GameStartButton);
+	      
 	 
 	      MissionSelection= new JLabel (languageListener.Langmenu[2]);
-	     MissionSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	      MissionSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
 	 
 	    GamePanelMissionSelectionAndSomeMore.add(MissionSelection);
 	    GamePanelMissionSelectionAndSomeMore.add(missionListener.MissionComboBox);
 	    
-	  
+	    missionListener.MissionComboBox.setForeground(Color.DARK_GRAY);
+	    missionListener.MissionComboBox.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	    missionListener.MissionComboBox.setBackground(Color.LIGHT_GRAY);
+	    
 	    LanguageSelection= new JLabel (languageListener.Langmenu[3]);
 	    LanguageSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
 	  
 	    GamePanelMissionSelectionAndSomeMore.add(LanguageSelection);
 	    GamePanelMissionSelectionAndSomeMore.add(languageListener.LanguageComboBox);
 	    languageListener.LanguageComboBox.addActionListener(languageListener);
-	    this.revalidate();
+	    
+	    languageListener.LanguageComboBox.setForeground(Color.DARK_GRAY);
+	    languageListener.LanguageComboBox.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	    languageListener.LanguageComboBox.setBackground(Color.LIGHT_GRAY);
+	    
+	    GameHelpButton= new JButton(languageListener.Langmenu[4]);
+	    GameHelpButton.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	    GameHelpButton.addActionListener(helpListener);
+	    GameHelp.add(GameHelpButton);
+	      
+	     this.revalidate();
 	     this.add(GamePanelTitle);
 	     this.add(GamePanelStartInstructions);
 	     this.add(GamePanelStart);
 	     this.add(GamePanelMissionSelectionAndSomeMore);
-	     
+	     this.add(GameHelp);
 	    
 	}
 }	
+
 
