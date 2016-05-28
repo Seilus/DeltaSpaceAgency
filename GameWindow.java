@@ -61,7 +61,8 @@ public class GameWindow extends JFrame  {
 		GameStartListener startListener=new GameStartListener(okno, testAnim);
 	        LanguageChooserListener languageListener= new LanguageChooserListener ();
 		MissionSelectionClass missionListener=new MissionSelectionClass();
-		MenuFrame t= new MenuFrame(startListener,languageListener,missionListener);
+		HelpListener helpListener=new HelpListener();
+		MenuFrame t= new MenuFrame(startListener,languageListener,missionListener,helpListener);
 		t.setSize(640, 480); 
 		t.setVisible(true);
 		
