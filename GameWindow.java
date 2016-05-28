@@ -51,7 +51,7 @@ public class GameWindow extends JFrame  {
 		LanguageChooserListener languageListener= new LanguageChooserListener ();
 		Ship rocket=new Ship(0, 0);
 		GameMap testMap=new GameMap(planetSystem, rocket);
-		ShipStatus shipStats=new ShipStatus(rocket);
+		ShipStatus shipStats=new ShipStatus(rocket,languageListener);
 		GameHUD testHUD=new GameHUD(shipStats, languageListener);
 		GameWindow okno=new GameWindow(testMap, testHUD, rocket);
 		KeyboardFocusManager shipKeyboardSteer= KeyboardFocusManager.getCurrentKeyboardFocusManager();
