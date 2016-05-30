@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
 import javax.swing.Timer;
 
 public class MouseShipSteering implements MouseListener {
-
+	//class holds listeners responsible for making the ship turn constantly while mouse button is being held
 	GameWindow okno;
 	GameMap map;
 	Ship rocket;

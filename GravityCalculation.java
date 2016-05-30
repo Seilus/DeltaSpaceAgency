@@ -1,6 +1,8 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
 public class GravityCalculation{
+	//class only holds static methods for calculating the gravitational forces acting on the ship and planets
+	
 	static double gravConstantT=6.673*Math.pow(10, -8);
 	GravityCalculation(){	
 	}

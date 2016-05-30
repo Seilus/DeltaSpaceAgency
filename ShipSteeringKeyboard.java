@@ -4,7 +4,7 @@ import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
 
 public class ShipSteeringKeyboard implements KeyEventDispatcher {
-
+	//listener for steering the ship with arrow keys 
 	Ship rocket;
 
 	

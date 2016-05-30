@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 public class GameAnimation {
+	//Class responsible for calling calculations concerning gravity and landings and animation 
 	boolean collisionDetector;
 	Timer animation;
 	CelestialBody[] planetSystem;

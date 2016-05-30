@@ -1,19 +1,23 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
-import java.awt.KeyboardFocusManager;
+import java.awt.Insets;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 
 public class GameWindow extends JFrame  {
-
+	//the game Frame, showing both the map and the HUD
 	private static final long serialVersionUID = 1L;
 	
 	Ship rocket;
+	GameMap map;
+	GameHUD hud;
+	
 	
 	public GameWindow(GameMap map, GameHUD hud, Ship rocket) throws HeadlessException {
 		super();
@@ -21,54 +25,41 @@ public class GameWindow extends JFrame  {
 		GridBagLayout gridBag=new GridBagLayout();
 		GridBagConstraints gridC=new GridBagConstraints();
 		setLayout(gridBag);
-		gridC.weighty=0.85;
+		gridC.weighty=0.8;
 		gridC.weightx=1d;
-		gridC.ipadx=1;
-		gridC.ipady=1;
+		gridC.insets=new Insets(0,0,0,0);
+		gridC.ipadx=0;
+		gridC.ipady=0;
 		this.rocket=rocket;
 		gridC.fill=GridBagConstraints.BOTH;
 		gridBag.setConstraints(map, gridC);
+		map.setMinimumSize(new Dimension(800, 500));
 		this.add(map);
-		gridC.weighty=0.15;
+		gridC.weighty=0.2;
 		gridC.gridy=1;
 		gridC.weightx=1d;
-		gridC.ipadx=1;
-		gridC.ipady=1;
+		gridC.ipadx=0;
+		gridC.ipady=0;
 		gridC.fill=GridBagConstraints.BOTH;
 		gridBag.setConstraints(hud, gridC);
+		hud.setMinimumSize(new Dimension(800, 100));
 		this.add(hud);
 		this.setTitle("DELTA Space Agency");
-		this.setSize(1200, 600);
+		this.setMinimumSize(getMinimumSize());
+		this.setSize(1200, 700);
 	}
 
 	public static void main(String[] args) throws IOException {
-		CelestialBody[] planetSystem=new CelestialBody[3];{
-			planetSystem[0]=new CelestialBody(100000, 0, 0.1, 300, -100, 25);
-			planetSystem[1]=new CelestialBody(2500000, 0, 0, 000, -100, 65);
-			planetSystem[2]=new CelestialBody(100000, 0.025, 0, -100, -300, 20);
-		}
 		
-		LanguageChooserListener languageListener= new LanguageChooserListener ();
-		Ship rocket=new Ship(0, 0);
-		GameMap testMap=new GameMap(planetSystem, rocket);
-		ShipStatus shipStats=new ShipStatus(rocket,languageListener);
-		GameHUD testHUD=new GameHUD(shipStats, languageListener);
-		GameWindow okno=new GameWindow(testMap, testHUD, rocket);
-		KeyboardFocusManager shipKeyboardSteer= KeyboardFocusManager.getCurrentKeyboardFocusManager();
-		shipKeyboardSteer.addKeyEventDispatcher(new ShipSteeringKeyboard(rocket));
-		//okno.setVisible(true);
-		okno.addMouseListener(new MouseShipSteering(okno, rocket, testMap));
-		GameAnimation testAnim=new GameAnimation(planetSystem, rocket, testMap, shipStats);
-		GameStartListener startListener=new GameStartListener(okno, testAnim);
-		
+		LanguageSelectionEnglish englishLang=new LanguageSelectionEnglish();
+		LanguageSelectionPolski polishLang=new LanguageSelectionPolski();
+		LanguageChooserListener languageListener= new LanguageChooserListener (englishLang, polishLang);
+		GameStartListener startListener=new GameStartListener(languageListener, englishLang, polishLang);
 		MissionSelectionClass missionListener=new MissionSelectionClass();
 		HelpListener helpListener=new HelpListener();
-		MenuFrame t= new MenuFrame(startListener,languageListener,missionListener,helpListener);
+		MenuFrame t= new MenuFrame(startListener, languageListener,missionListener,helpListener);
 		t.setSize(640, 480); 
 		t.setVisible(true);
-
-		
-		//testAnim.animationStart();
 	}
 			
 }

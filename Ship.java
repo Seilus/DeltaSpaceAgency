@@ -1,19 +1,20 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
-
+	//holds information about the space ship as well as methods for making it move due to engine and gravity
+	//the movement is done by moving all the planets, as the ship is stationary in the center of the map
 
 public class Ship{
 	private int shipMassT;
 	private float fuelMassT;
 	private int forceOfEngineN;
-	//tangens tego kąta będzie określał kierunek ruchu statku
+	//tangent of this angle informs of the direction of the ship
 	private double turningAngleDeg;
 	private double speedXkmByS;
 	private double speedYkmByS;
+	private int destination;
 	double accXkmBySGrav;
 	double accYkmBySGrav;
-	//pomiędzy 0 a 1000
 	private int throttleValue;
-	//zmieniane przez przycisk silnika i spację.
+	//toggled with the button and space bar
 	private boolean engineToggle;
 	public Ship(double speedX, double speedY){
 		shipMassT=300;
@@ -27,8 +28,15 @@ public class Ship{
 	
 	}
 	
+	
+	
 	public int getThrottleValue(){
 		return throttleValue; 
+	}
+	
+	//returns the no. of planet to land on. Possible values are 1,2,4,5,6,7,8
+	public int getDestination(){
+		return destination;
 	}
 	
 	public void setThrottleValue(int throttle){
@@ -101,8 +109,6 @@ public class Ship{
 			accX+=(forceOfEngineN*throttleValue*Math.cos(this.turningAngleDeg*2*Math.PI/360)/(1000*(this.getMass()*1000))/frequency);
 			accY+=(forceOfEngineN*throttleValue*-Math.sin(this.turningAngleDeg*2*Math.PI/360)/(1000*(this.getMass()*1000))/frequency);
 		}
-		//System.out.println("X: "+accX);
-		//System.out.println("Y: "+accY);
 		this.speedXkmByS+=accX/frequency;
 		this.speedYkmByS+=accY/frequency;
 		for(int ii=0; ii<planetSystem.length; ii++){

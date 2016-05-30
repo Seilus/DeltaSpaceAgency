@@ -3,25 +3,18 @@ package pl.edu.pw.fizyka.pojava.OddzialDelta;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.LayoutManager;
 
 import javax.swing.JPanel;
 
 public class GameMap extends JPanel {
-	
-	/**
-	 * 
-	 */
+	//Class paints the ship in the middle, and all planets in their respective positions
 	private static final long serialVersionUID = 1L;
-	/*
-	private */
-	CelestialBody[] planetSystem;
 
-	Ship rocket;
+	private CelestialBody[] planetSystem;
+	private Ship rocket;
 
 	public GameMap(CelestialBody[] planetarySystem, Ship rocket) {
 
-		// TODO Auto-generated constructor stub
 		planetSystem=planetarySystem;	
 		Dimension pref=new Dimension(1200, 510);
 		Dimension min=new Dimension(640, 480);
@@ -30,22 +23,6 @@ public class GameMap extends JPanel {
 		this.rocket=rocket;
 
 	}
-
-	public GameMap(LayoutManager arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-	}
-
-	public GameMap(boolean isDoubleBuffered) {
-		super(isDoubleBuffered);
-		// TODO Auto-generated constructor stub
-	}
-
-	public GameMap(LayoutManager layout, boolean isDoubleBuffered) {
-		super(layout, isDoubleBuffered);
-		// TODO Auto-generated constructor stub
-	}
-
 	
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);

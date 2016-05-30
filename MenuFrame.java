@@ -1,10 +1,6 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
-
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,8 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class MenuFrame extends JFrame {
-	
-	 
+	//the first component that appears when program is run. Allows for choosing of destination, flag
+	//and, of course, starting the mission
+		
 	 public int SelectedMission=-1;
 	 JButton GameStartButton, GameHelpButton;
 	 JLabel GameLabelStartInstructions, MissionSelection, LanguageSelection;
@@ -42,7 +39,7 @@ public class MenuFrame extends JFrame {
 void setMission(int mission){
 		SelectedMission=mission;
 	}
-	public MenuFrame(GameStartListener startListener,LanguageChooserListener languageListener,MissionSelectionClass missionListener,HelpListener helpListener) throws HeadlessException{
+	public MenuFrame(GameStartListener startListener, LanguageChooserListener languageListener, MissionSelectionClass missionListener,HelpListener helpListener) throws HeadlessException{
 		setLayout(new GridLayout(5, 1));
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	     JPanel GamePanelTitle=new JPanel();
@@ -72,15 +69,15 @@ void setMission(int mission){
 	     GameTitle.setFont(new Font("Comic Sans", Font.BOLD, 20));	
 	     GamePanelTitle.add(GameTitle);
 	     
-	      GameStartButton=new JButton(languageListener.Langmenu[0]);
-	      GameStartButton.setForeground(Color.DARK_GRAY);
-	      GameStartButton.setBackground(Color.LIGHT_GRAY);
+	     GameStartButton=new JButton(languageListener.Langmenu[0]);
+	     GameStartButton.setForeground(Color.DARK_GRAY);
+	     GameStartButton.setBackground(Color.LIGHT_GRAY);
 	      
-	      GameLabelStartInstructions= new JLabel (languageListener.Langmenu[1]);
-          GameLabelStartInstructions.setFont(new Font("Comic Sans", Font.BOLD, 14));
-          GamePanelStartInstructions.add(GameLabelStartInstructions);
-          GameStartButton.addActionListener(startListener);
-	      GamePanelStart.add(GameStartButton);
+	     GameLabelStartInstructions= new JLabel (languageListener.Langmenu[1]);
+         GameLabelStartInstructions.setFont(new Font("Comic Sans", Font.BOLD, 14));
+         GamePanelStartInstructions.add(GameLabelStartInstructions);
+         GameStartButton.addActionListener(startListener);
+	     GamePanelStart.add(GameStartButton);
 	      
 	 
 	      MissionSelection= new JLabel (languageListener.Langmenu[2]);
@@ -118,5 +115,4 @@ void setMission(int mission){
 	    
 	}
 }	
-
 

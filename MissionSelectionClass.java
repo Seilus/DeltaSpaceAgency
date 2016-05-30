@@ -8,7 +8,7 @@ import javax.swing.JComboBox;
 public class MissionSelectionClass implements ActionListener{
 	 public String [] Missions={"Mission 1","Mission 2"}; 
 	 MenuFrame menuFrame;
-JComboBox MissionComboBox=new JComboBox(Missions);
+	 JComboBox MissionComboBox=new JComboBox(Missions);
 @Override
 public void actionPerformed(ActionEvent e) {
 	 if(MissionComboBox.getSelectedIndex()==0){

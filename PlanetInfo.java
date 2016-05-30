@@ -4,25 +4,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.LayoutManager;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class PlanetInfo extends JPanel {
-
-	/**
-	 * 
-	 */
+	//class displays information on destination planet in a text area in GameHUD
+	
 	private static final long serialVersionUID = 1L;
 	LanguageChooserListener languageListener;
 	JTextArea planetInfo;
     void setNamePlanet(String game[]){
 		planetInfo.setText("\n"+game[5]+"\n"+game[6]+"\n"+game[7]+"\n"+game[8]+"\n");
 	}
-	public PlanetInfo(LanguageChooserListener languageListener) {
-		 this.languageListener=languageListener;
-	     this.languageListener.setPlanetInfo(this);
+	public PlanetInfo() {
 		
 		setLayout(new FlowLayout(2));
 		setBackground(Color.DARK_GRAY);
@@ -39,21 +34,4 @@ public class PlanetInfo extends JPanel {
 		radar.setPreferredSize(radarPref);
 		this.add(radar);
 	}
-
-	public PlanetInfo(LayoutManager arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-	}
-
-	public PlanetInfo(boolean arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-	}
-
-	public PlanetInfo(LayoutManager arg0, boolean arg1) {
-		super(arg0, arg1);
-		// TODO Auto-generated constructor stub
-	}
-
-}
-
+}	

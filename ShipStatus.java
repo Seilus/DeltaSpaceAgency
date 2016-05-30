@@ -16,10 +16,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class ShipStatus extends JPanel {
+	//shows all the information and controls for the ship in GameHUD
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	JTextArea sInfo,sInfoV,shipInfo;
@@ -27,19 +25,19 @@ public class ShipStatus extends JPanel {
 	JSlider fuel;
 	Ship rocket;
 	JButton engineToggle;
-	
-	LanguageChooserListener languageListener;
-	
-    void setNameShip(String game[]){
-    	sInfo.setText("\n"+game[1]+"\n"+game[2]+"\n"+game[3]+"\n"+game[4]+"\n");
+	double shipSpeed;
+	String[] game;
+	DecimalFormat format;
+    void setNameShip(){
+    	shipSpeed=Math.sqrt(Math.pow(rocket.getSpeedX(), 2)+Math.pow(rocket.getSpeedY(), 2));
+    	format=new DecimalFormat("#.##");
+    	sInfo.setText("\n"+game[1]+" "+format.format(shipSpeed)+"km/s\n"+game[2]+" "+rocket.getThrottleValue()/10+"%\n"+game[3]+" "+(int)rocket.getMass()+"t\n"+game[4]+" "+format.format(rocket.getFuelMass()/7)+"%\n");
     	engineToggle.setText(game[0]);
 	}
 	LanguageSelectionEnglish tt= new LanguageSelectionEnglish();
 	
-	public ShipStatus(Ship rocket,LanguageChooserListener languageListener) {
-		this.languageListener=languageListener;
-	     this.languageListener.setShipStatus(this);
-		
+	public ShipStatus(Ship rocket, String[] game) {
+		this.game=game;
 		this.rocket=rocket;
 		this.setLayout(new FlowLayout(0));
 		this.setBackground(Color.DARK_GRAY);
@@ -84,22 +82,24 @@ public class ShipStatus extends JPanel {
 		Font shipFont = new Font("Verdana", Font.BOLD, 12);
 		shipInfo.setFont(shipFont);
 		shipInfo.setForeground(Color.WHITE);
-		shipInfo.setText("\n"+tt.game[1]+"\n"+tt.game[2]+"\n"+tt.game[3]+"\n"+tt.game[4]+"\n");
+	
+		//shipInfoValues.setBackground(Color.BLACK);
+		//shipInfoValues.setEditable(false);
+		//shipInfoValues.setFont(shipFont);
+		//shipInfoValues.setForeground(Color.WHITE);
 		
-		shipInfoValues.setBackground(Color.BLACK);
-		shipInfoValues.setEditable(false);
-		shipInfoValues.setFont(shipFont);
-		shipInfoValues.setForeground(Color.WHITE);
-		
-		shipInfoValues.setText("\n"+Math.sqrt(Math.pow(rocket.getSpeedX(), 2)+Math.pow(rocket.getSpeedY(), 2))+"km/s\n"+rocket.getThrottleValue()/10+"%\n"+(int)rocket.getMass()+"t\n"+rocket.getFuelMass()/7+"%\n");
+		//shipInfoValues.setText("\n"+Math.sqrt(Math.pow(rocket.getSpeedX(), 2)+Math.pow(rocket.getSpeedY(), 2))+"km/s\n"+rocket.getThrottleValue()/10+"%\n"+(int)rocket.getMass()+"t\n"+rocket.getFuelMass()/7+"%\n");
 		this.add(shipInfo);
-		this.add(shipInfoValues);
+		//this.add(shipInfoValues);
 		this.sInfo=shipInfo;
 		this.sInfoV=shipInfoValues;
 	}
 	
 	public void update(){
-		sInfoV.setText("\n"+new DecimalFormat("#.##").format(Math.sqrt(Math.pow(rocket.getSpeedX(), 2)+Math.pow(rocket.getSpeedY(), 2)))+"km/s\n"+rocket.getThrottleValue()/10+"%\n"+(int)rocket.getMass()+"\n"+rocket.getFuelMass()/7+"%\n");
+		shipSpeed=Math.sqrt(Math.pow(rocket.getSpeedX(), 2)+Math.pow(rocket.getSpeedY(), 2));
+		sInfo.setText("\n"+game[1]+" "+format.format(shipSpeed)+"km/s\n"+game[2]+" "+rocket.getThrottleValue()/10+"%\n"+game[3]+" "+(int)rocket.getMass()+"t\n"+game[4]+" "+format.format(rocket.getFuelMass()/7)+"%\n");
+    	
+		//sInfoV.setText("\n"+new DecimalFormat("#.##").format(Math.sqrt(Math.pow(rocket.getSpeedX(), 2)+Math.pow(rocket.getSpeedY(), 2)))+"km/s\n"+rocket.getThrottleValue()/10+"%\n"+(int)rocket.getMass()+"\n"+rocket.getFuelMass()/7+"%\n");
 		throttle.setValue(rocket.getThrottleValue());
 		fuel.setValue((int)(rocket.getFuelMass()*10));
 	}

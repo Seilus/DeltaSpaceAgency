@@ -1,15 +1,14 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
 public class CelestialBody {
-
+	//class represents a single celestial body, so in our program a planet or star
 	
 	private double massT;
-	//prędkości i położenia początkowe; składowa X i Y
+	//initial velocities and location; X & Y components
 	private double speedXkmBys;
 	private double speedYkmBys;
 	private double positionXkm;
 	private double positionYkm;
-	//promień
 	private int radiuskm;
 	
 	CelestialBody(){
@@ -27,37 +26,32 @@ public class CelestialBody {
 		positionYkm=initPosY;
 		radiuskm=radius;
 	}
-	//zwraca położenie w X
 	public double getX(){
 		return positionXkm;	
 	}
-	//zwraca położenie w Y
 	public double getY(){
 		return positionYkm;
 	}
+	//two methods called when bodies move relative to the ship
 	public void changeX(double posX){
 		this.positionXkm+=posX;
 	}
 	public void changeY(double posY){
 		this.positionYkm+=posY;
 	}
-	//zwraca prędkość X
 	public double getSpeedX(){
 		return speedXkmBys;	
 	}
-	//zwraca prędkość Y
 	public double getSpeedY(){
 		return speedYkmBys;
 	}	
-	//zwraca masę
 	public double getMass(){
 		return massT;
 	}
-	//zwraca promień ciała
 	public int getRadius(){
 		return radiuskm;
 	}
-	//zmiana położenia i prędkości
+	//two methods called when there is a change in forces (gravity movement)
 	public void movementX(double speedChangeX, int frequency){
 		speedXkmBys+=speedChangeX;
 		positionXkm+=speedXkmBys/frequency;	
