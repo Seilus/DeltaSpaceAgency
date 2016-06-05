@@ -4,10 +4,11 @@ public class LanguageSelectionPolski {
 
 	
 	String[]  menu=new String[5];
-	String[] missions=new String[2];
+	
 	String[] game=new String[9];
 	String[] planets=new String[9];
 	String [] help=new String[1];
+	String[] missions={"Misja 1","Misja 2","Misja 3","Misja 4","Misja 5","Misja 6","Misja 7","Misja 8","Misja 9"};
 		public LanguageSelectionPolski(){
 			menu=new String[5];
 			menu[0]="Start";
@@ -26,16 +27,7 @@ public class LanguageSelectionPolski {
 			game[6]="Odleg\u0142o\u015b\u0107 do najbli\u017cszej planety";
 			game[7]="X odleg\u0142o\u015b\u0107 do planety";
 			game[8]="Y odleg\u0142o\u015b\u0107 do planety";
-			missions=new String[9];
-			missions[0]="Misja 1";
-			missions[1]="Misja 2";
-			missions[2]="Misja 3";
-			missions[3]="Misja 4";
-			missions[4]="Misja 5";
-			missions[5]="Misja 6";
-			missions[6]="Misja 7";
-			missions[7]="Misja 8";
-			missions[8]="Misja 9";
+			
 		        
 		        help=new String[1];
 		        help[0]="W grze â€¦. Wykonujesz misje kosmicznÄ…. Twoje zadanie polega na wylÄ…dowaniu rakietÄ… na planecie , wyznaczonej przez wybranÄ… misjÄ™."
