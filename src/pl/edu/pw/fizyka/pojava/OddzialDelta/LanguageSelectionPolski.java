@@ -8,7 +8,7 @@ public class LanguageSelectionPolski {
 	String[] game=new String[9];
 	String[] planets=new String[9];
 	String [] help=new String[1];
-	String[] missions={"Misja 1","Misja 2","Misja 3","Misja 4","Misja 5","Misja 6","Misja 7","Misja 8","Misja 9"};
+//	String[] missions={"Misja 1","Misja 2","Misja 3","Misja 4","Misja 5","Misja 6","Misja 7","Misja 8","Misja 9"};
 		public LanguageSelectionPolski(){
 			menu=new String[5];
 			menu[0]="Start";
