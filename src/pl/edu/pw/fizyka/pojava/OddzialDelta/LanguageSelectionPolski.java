@@ -6,8 +6,8 @@ public class LanguageSelectionPolski {
 	String[]  menu=new String[5];
 	String[] missions=new String[2];
 	String[] game=new String[9];
-	String[] planets=new Stirng[9];
-	String [] help=new [1];
+	String[] planets=new String[9];
+	String [] help=new String[1];
 		public LanguageSelectionPolski(){
 			menu=new String[5];
 			menu[0]="Start";
@@ -38,21 +38,21 @@ public class LanguageSelectionPolski {
 			missions[8]="Misja 9";
 		        
 		        help=new String[1];
-		        help[0]="W grze …. Wykonujesz misje kosmiczną. Twoje zadanie polega na wylądowaniu rakietą na planecie , wyznaczonej przez wybraną misję. 
-Rakietą steruję się klawiaturą (strzałki) lub myszką(zmiana kąta ruchu). Rakieta zacznie się poruszać po naciśnięciu przycisku Silnik. Paliwo rakiety jest ograniczone.
-Lista misji:
-1.	Misja 1 – Cel: Słońce
-2.	Misja 2 – Cel: Merkury
-3.	Misja 3 – Cel: Wenus 
-4.	Misja 4 - Cel: Mars 
-5.	Misja 5 – Cel: Jowisz 
-6.	Misja 6 – Cel: Saturn 
-7.	Misja 7 -  Cel: Uran
-8.	Misja 8 – Cel: Neptun 
-Każda misja rozpoczyna się na Ziemi.
-";
-                      planets=new String[9];
-                      planets[0]="S\u0142\u0144ce";
+		        help[0]="W grze â€¦. Wykonujesz misje kosmicznÄ…. Twoje zadanie polega na wylÄ…dowaniu rakietÄ… na planecie , wyznaczonej przez wybranÄ… misjÄ™."
++"RakietÄ… sterujÄ™ siÄ™ klawiaturÄ… (strzaĹ‚ki) lub myszkÄ…(zmiana kÄ…ta ruchu). Rakieta zacznie siÄ™ poruszaÄ‡ po naciĹ›niÄ™ciu przycisku Silnik. Paliwo rakiety jest ograniczone."
++"Lista misji:"
++"1.	Misja 1 â€“ Cel: SĹ‚oĹ„ce"
++"2.	Misja 2 â€“ Cel: Merkury"
++"3.	Misja 3 â€“ Cel: Wenus"
++"4.	Misja 4 - Cel: Mars" 
++"5.	Misja 5 â€“ Cel: Jowisz"
++"6.	Misja 6 â€“ Cel: Saturn"
++"7.	Misja 7 -  Cel: Uran"
++"8.	Misja 8 â€“ Cel: Neptun" 
++"KaĹĽda misja rozpoczyna siÄ™ na Ziemi.";
+
+            planets=new String[9];
+            planets[0]="S\u0142\u0144ce";
 			planets[1]="Merkury";
 			planets[2]="Wenus";
 			planets[3]="Ziemia";
@@ -60,7 +60,7 @@ Każda misja rozpoczyna się na Ziemi.
 			planets[5]="Jowisz";
 			planets[6]="Saturn";
 			planets[7]="Uran";
-                        planets[8]="Neptun";
+            planets[8]="Neptun";
 		}
 }
 /*Ą - \u0104; ą - \u0105
