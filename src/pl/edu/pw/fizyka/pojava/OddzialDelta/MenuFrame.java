@@ -19,6 +19,9 @@ public class MenuFrame extends JFrame {
 	 JPanel GameHelpOtherPanel;
 	 JFrame GameHelpFrame;
 	 JTextArea HelpText;
+	 JComboBox MissionComboBox;
+	 
+	 
 	/**
 	 * 
 	 */
@@ -39,6 +42,10 @@ public class MenuFrame extends JFrame {
 void setMission(int mission){
 		SelectedMission=mission;
 	}
+void setHelpInfo(String[]help){
+	HelpText.setText(help[0]);
+}
+
 	public MenuFrame(GameStartListener startListener, LanguageChooserListener languageListener, MissionSelectionClass missionListener,HelpListener helpListener) throws HeadlessException{
 		setLayout(new GridLayout(5, 1));
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -50,7 +57,11 @@ void setMission(int mission){
 	     this.startListener.setMenuFrame(this);
 	     this.helpListener=helpListener;
 	     this.helpListener.setMenuFrame(this);
+	     this.missionListener=missionListener;
+	     this.missionListener.setMenuFrame(this);
 	     
+	    
+	   
 	     JPanel GamePanelStartInstructions= new JPanel();
 	     JPanel GamePanelStart= new JPanel();
 	     JPanel GamePanelMissionSelectionAndSomeMore= new JPanel();
@@ -82,13 +93,16 @@ void setMission(int mission){
 	 
 	      MissionSelection= new JLabel (languageListener.Langmenu[2]);
 	      MissionSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
-	 
+	      
+	     MissionComboBox=new JComboBox(languageListener.englishLang.missions);
+
 	    GamePanelMissionSelectionAndSomeMore.add(MissionSelection);
-	    GamePanelMissionSelectionAndSomeMore.add(missionListener.MissionComboBox);
+	    GamePanelMissionSelectionAndSomeMore.add(MissionComboBox);
 	    
-	    missionListener.MissionComboBox.setForeground(Color.DARK_GRAY);
-	    missionListener.MissionComboBox.setFont(new Font("Comic Sans", Font.BOLD, 14));
-	    missionListener.MissionComboBox.setBackground(Color.LIGHT_GRAY);
+	   	    MissionComboBox.setForeground(Color.DARK_GRAY);
+	    MissionComboBox.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	    MissionComboBox.setBackground(Color.LIGHT_GRAY);
+	    
 	    
 	    LanguageSelection= new JLabel (languageListener.Langmenu[3]);
 	    LanguageSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
