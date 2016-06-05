@@ -6,7 +6,7 @@ public class LanguageSelectionEnglish {
 	String[] game;
 	String[] help;
 	String[]planets;
-	String [] missions={"Mission 1","Mission 2","Mission 3","Mission 4","Mission 5","Mission 6","Mission 7","Mission 8","Mission 9"};
+String [] missions={"1","2","3","4","5","6","7","8","9"};
 		public LanguageSelectionEnglish(){
 			menu=new String[5];
 			menu[0]="Start";
