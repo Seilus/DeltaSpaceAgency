@@ -37,11 +37,13 @@ public class GameStartListener implements ActionListener {
 			shipStats=new ShipStatus(rocket, polishLang.game);
 			shipStats.setNameShip();
 			planetInfo.setNamePlanet(polishLang.game);
+			menuFrame.setHelpInfo(polishLang.help);
 		}
 		else{
 			shipStats=new ShipStatus(rocket, englishLang.game);
 			shipStats.setNameShip();
 			planetInfo.setNamePlanet(englishLang.game);
+			menuFrame.setHelpInfo(englishLang.help);
 		}
 		GameHUD testHUD=new GameHUD(shipStats, planetInfo);
 		GameWindow okno=new GameWindow(testMap, testHUD, rocket);
@@ -50,6 +52,7 @@ public class GameStartListener implements ActionListener {
 		shipKeyboardSteer.addKeyEventDispatcher(new ShipSteeringKeyboard(rocket));
 		okno.addMouseListener(new MouseShipSteering(okno, rocket, testMap));
 		GameAnimation testAnim=new GameAnimation(planetSystem, rocket, testMap, shipStats);
+		menuFrame.setVisible(false);
 		okno.setVisible(true);
 		testAnim.animationStart();
 	}
