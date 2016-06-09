@@ -6,7 +6,7 @@ public class LanguageSelectionEnglish {
 	String[] game;
 	String[] help;
 	String[]planets;
-String [] missions={"1","2","3","4","5","6","7","8","9"};
+	String [] missions={"1","2","3","4","5","6","7","8","9"};
 		public LanguageSelectionEnglish(){
 			menu=new String[5];
 			menu[0]="Start";
@@ -27,18 +27,18 @@ String [] missions={"1","2","3","4","5","6","7","8","9"};
 			game[8]="Y distance to planet";
 			
 			 help=new String[2];
-			 help[0]="In the game â€¦. You fullfill space mission. Your task is to land rocket on the planet dependent of the mission choosen. "
-			 		+ "Rocket is controlled by keyboard (arrows) or mouse (change of angle of movement). Rocket will start moving after clicking  Engine. Rocketâ€™s fuel is limited."
-                     +"List of missions:"
-             +"1.	Mission 1  Cel: Sun"
-             +"2.	Mission 2  Cel: Mercury"
-             +"3.	Mission 3  Cel: Wenus"
-             +"4.	Mission 4  Cel: Mars "
-            +"5.	Mission 5  Cel: Jupiter"
-             +"6.	Mission 6  Cel: Saturn"
-             +"7.	Mission 7  Cel: Uranus"
-             +"8.	Mission 8  Cel: Neptun" 
-             +"Each mission starts on Earth.";
+			 help[0]="In the game .... You fullfill space mission.\n Your task is to land rocket on the planet dependent of the mission choosen.\n "
+			 		+ "Rocket is controlled by keyboard (arrows) or mouse (change of angle of movement).\n Rocket will start moving after clicking  Engine.\n Rocket fuel is limited."
+                     +"\nList of missions:\n"
+             +"1.	Mission 1  Cel: Sun\n"
+             +"2.	Mission 2  Cel: Mercury\n"
+             +"3.	Mission 3  Cel: Wenus\n"
+             +"4.	Mission 4  Cel: Mars\n "
+            +"5.	Mission 5  Cel: Jupiter\n"
+             +"6.	Mission 6  Cel: Saturn\n"
+             +"7.	Mission 7  Cel: Uranus\n"
+             +"8.	Mission 8  Cel: Neptun\n" 
+             +"Each mission starts on Earth.\n";
 			 
 			
 			
