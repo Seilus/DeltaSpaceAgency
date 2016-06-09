@@ -8,7 +8,7 @@ public class LanguageSelectionPolski {
 	String[] game=new String[9];
 	String[] planets=new String[9];
 	String [] help=new String[1];
-//	String[] missions={"Misja 1","Misja 2","Misja 3","Misja 4","Misja 5","Misja 6","Misja 7","Misja 8","Misja 9"};
+	//String[] missions={"Misja 1","Misja 2","Misja 3","Misja 4","Misja 5","Misja 6","Misja 7","Misja 8","Misja 9"};
 		public LanguageSelectionPolski(){
 			menu=new String[5];
 			menu[0]="Start";
@@ -30,18 +30,18 @@ public class LanguageSelectionPolski {
 			
 		        
 		        help=new String[1];
-		        help[0]="W grze â€¦. Wykonujesz misje kosmicznÄ…. Twoje zadanie polega na wylÄ…dowaniu rakietÄ… na planecie , wyznaczonej przez wybranÄ… misjÄ™."
-+"RakietÄ… sterujÄ™ siÄ™ klawiaturÄ… (strzaĹ‚ki) lub myszkÄ…(zmiana kÄ…ta ruchu). Rakieta zacznie siÄ™ poruszaÄ‡ po naciĹ›niÄ™ciu przycisku Silnik. Paliwo rakiety jest ograniczone."
-+"Lista misji:"
-+"1.	Misja 1 â€“ Cel: SĹ‚oĹ„ce"
-+"2.	Misja 2 â€“ Cel: Merkury"
-+"3.	Misja 3 â€“ Cel: Wenus"
-+"4.	Misja 4 - Cel: Mars" 
-+"5.	Misja 5 â€“ Cel: Jowisz"
-+"6.	Misja 6 â€“ Cel: Saturn"
-+"7.	Misja 7 -  Cel: Uran"
-+"8.	Misja 8 â€“ Cel: Neptun" 
-+"KaĹĽda misja rozpoczyna siÄ™ na Ziemi.";
+		        help[0]="W grze .... Wykonujesz misje kosmiczn\u0105. \nTwoje zadanie polega na wyl\u0105dowaniu rakiet\u0105 na planecie , wyznaczonej przez wybran\u0105 misj\u0119.\n"
++"Rakiet\u0105 steruj\u0119 si\u0119 klawiatur\u0105 (strza\u0142ki) lub myszk\u0105(zmiana k\u0105ta ruchu).\n Rakieta zacznie si\u0119 porusza\u0107 po naci\u015bni\u0119ciu przycisku Silnik.\n Paliwo rakiety jest ograniczone.\n"
++"\nLista misji:\n"
++"1.	Misja 1  Cel: S\u0142o\u0144ce\n"
++"2.	Misja 2  Cel: Merkury\n"
++"3.	Misja 3  Cel: Wenus\n"
++"4.	Misja 4  Cel: Mars\n" 
++"5.	Misja 5  Cel: Jowisz\n"
++"6.	Misja 6  Cel: Saturn\n"
++"7.	Misja 7  Cel: Uran\n"
++"8.	Misja 8  Cel: Neptun\n" 
++"Ka\u017cda misja rozpoczyna si\u0119 na Ziemi.\n";
 
             planets=new String[9];
             planets[0]="S\u0142\u0144ce";
