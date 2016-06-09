@@ -16,9 +16,17 @@ public class HelpListener implements ActionListener{
 		}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(menuFrame.languageListener.polish){
+			
+			menuFrame.HelpText.setText(polish.help[0]);
+			menuFrame.GameHelpFrame.setSize(550,350);
+		}
+		else{
 		menuFrame.HelpText.setText(english.help[0]);
+		menuFrame.GameHelpFrame.setSize(500,300);
+		}
 		menuFrame.GameHelpOtherPanel.add(menuFrame.HelpText);
-		menuFrame.GameHelpFrame.setSize(400,200);
+		//menuFrame.GameHelpFrame.setSize(500,300);
 		menuFrame.GameHelpFrame.add(menuFrame.GameHelpOtherPanel);
 		menuFrame.GameHelpFrame.setVisible(true);
 	}
