@@ -3,6 +3,7 @@ package pl.edu.pw.fizyka.pojava.OddzialDelta;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -12,9 +13,16 @@ public class GameMap extends JPanel {
 
 	private CelestialBody[] planetSystem;
 	private Ship rocket;
-
+	Random r=new Random();
+   int what=0;
+   public int starsLocationX[] =new int [1200];
+	public int starsLocationY[]= new int[1200];
+	
 	public GameMap(CelestialBody[] planetarySystem, Ship rocket) {
-
+		for(int ii=0;ii<1200;ii++){
+			starsLocationX[ii]=r.nextInt(1200);
+			starsLocationY[ii]=r.nextInt(1200);
+		}
 		planetSystem=planetarySystem;	
 		Dimension pref=new Dimension(1200, 510);
 		Dimension min=new Dimension(640, 480);
@@ -27,6 +35,15 @@ public class GameMap extends JPanel {
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
 		setBackground(Color.BLACK);
+				for(int ii=0; ii<1200; ii++){
+			
+				g.setColor(Color.WHITE);
+				g.fillOval(starsLocationX[ii],starsLocationY[ii],3,3);
+				
+		}
+		
+		
+		
 		for(int ii=0; ii<planetSystem.length; ii++){
 			g.setColor(Color.BLUE);
 			g.fillOval((int)planetSystem[ii].getX()-planetSystem[ii].getRadius()+this.getWidth()/2, (int)planetSystem[ii].getY()-planetSystem[ii].getRadius()+this.getHeight()/2, planetSystem[ii].getRadius()*2, planetSystem[ii].getRadius()*2);
@@ -40,5 +57,3 @@ public class GameMap extends JPanel {
 	
 	
 	
-
-
