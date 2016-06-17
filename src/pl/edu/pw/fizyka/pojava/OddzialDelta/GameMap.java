@@ -18,6 +18,7 @@ public class GameMap extends JPanel {
    public int starsLocationX[] =new int [1200];
 	public int starsLocationY[]= new int[1200];
 	
+	
 	public GameMap(CelestialBody[] planetarySystem, Ship rocket) {
 		for(int ii=0;ii<1200;ii++){
 			starsLocationX[ii]=r.nextInt(1200);
@@ -36,8 +37,12 @@ public class GameMap extends JPanel {
 		super.paintComponent(g);
 		setBackground(Color.BLACK);
 				for(int ii=0; ii<1200; ii++){
-			
-				g.setColor(Color.WHITE);
+				if(ii>600){
+					g.setColor(Color.LIGHT_GRAY);
+				}
+				else{
+					g.setColor(Color.WHITE);
+				}
 				g.fillOval(starsLocationX[ii],starsLocationY[ii],3,3);
 				
 		}
@@ -45,8 +50,15 @@ public class GameMap extends JPanel {
 		
 		
 		for(int ii=0; ii<planetSystem.length; ii++){
-			g.setColor(Color.BLUE);
+			g.setColor(planetSystem[ii].getColor());
 			g.fillOval((int)planetSystem[ii].getX()-planetSystem[ii].getRadius()+this.getWidth()/2, (int)planetSystem[ii].getY()-planetSystem[ii].getRadius()+this.getHeight()/2, planetSystem[ii].getRadius()*2, planetSystem[ii].getRadius()*2);
+			g.setColor(Color.WHITE);
+			g.drawArc((int)planetSystem[ii].getX()-planetSystem[ii].getRadius()+this.getWidth()/2, (int)planetSystem[ii].getY()-planetSystem[ii].getRadius()+this.getHeight()/2, (planetSystem[ii].getRadius()*2), (planetSystem[ii].getRadius()*2), -20, -140);
+			//g.fillOval((int)planetSystem[ii].getX()-planetSystem[ii].getRadius()+this.getWidth()/2, (int)planetSystem[ii].getY()-planetSystem[ii].getRadius()+this.getHeight()/2, (planetSystem[ii].getRadius()*2)/2, (planetSystem[ii].getRadius()*2)/2);
+			
+			g.drawArc((int)(planetSystem[ii].getX()-planetSystem[ii].getRadius()+this.getWidth()/2), (int)(planetSystem[ii].getY()-planetSystem[ii].getRadius()+this.getHeight()/2), (planetSystem[ii].getRadius()*2), (planetSystem[ii].getRadius()*2)-(13), -20, -140);
+			g.drawArc((int)(planetSystem[ii].getX()-planetSystem[ii].getRadius()+this.getWidth()/2), (int)(planetSystem[ii].getY()-planetSystem[ii].getRadius()+this.getHeight()/2), (planetSystem[ii].getRadius()*2), (planetSystem[ii].getRadius()*2)-(10), -20, -140);
+			g.drawArc((int)(planetSystem[ii].getX()-planetSystem[ii].getRadius()+this.getWidth()/2), (int)(planetSystem[ii].getY()-planetSystem[ii].getRadius()+this.getHeight()/2), (planetSystem[ii].getRadius()*2), (planetSystem[ii].getRadius()*2), 20, 140);
 		}
 		g.setColor(Color.YELLOW);
 		g.drawLine(this.getWidth()/2, this.getHeight()/2, this.getWidth()/2+(int)(12*Math.cos(rocket.getAngle()*2*Math.PI/360)), this.getHeight()/2-(int)(12*Math.sin(rocket.getAngle()*2*Math.PI/360)));
@@ -54,6 +66,5 @@ public class GameMap extends JPanel {
 		g.fillOval(this.getWidth()/2-2, this.getHeight()/2-2, 4, 4);
 	}
 }
-	
 	
 	
