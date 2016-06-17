@@ -5,12 +5,13 @@ import java.awt.event.ActionListener;
 
 public class HelpListener implements ActionListener{
 	LanguageSelectionEnglish english;
+	LanguageSelectionPolski polish;
 	
 	void setMenuFrame(MenuFrame menuFrame){
 		this.menuFrame=menuFrame;
 	}
 	MenuFrame menuFrame;
-	public HelpListener(LanguageSelectionEnglish english){
+	public HelpListener(LanguageSelectionEnglish english,LanguageSelectionPolski polish){
 		this.english=english;
 		
 		}
