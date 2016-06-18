@@ -60,6 +60,7 @@ public class GameWindow extends JFrame  {
 		MenuFrame t= new MenuFrame(startListener, languageListener,missionListener,helpListener);
 		t.setSize(640, 480); 
 		t.setVisible(true);
+		t.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 			
 }
