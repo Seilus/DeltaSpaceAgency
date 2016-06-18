@@ -18,7 +18,7 @@ public class GameAnimation {
 				if(jj!=ii){
 					if(Math.sqrt(Math.pow((planetSystem[jj].getX())-(planetSystem[ii].getX()), 2)+Math.pow((planetSystem[jj].getY())-(planetSystem[ii].getY()), 2))<=((planetSystem[jj].getRadius())+(planetSystem[ii].getRadius()))){
 						collisionDetector=true;
-						animation.stop();
+						//animation.stop();
 					}	
 				}	
 			}
@@ -45,7 +45,7 @@ public class GameAnimation {
 				GravityCalculation.computeGPlanets(planetSystem, 5);
 				GravityCalculation.computeGShip(planetSystem, 5, rocket);
 				rocket.shipMovement(planetSystem, 5);
-				GravityCalculation.computeGPlanets(planetSystem, 2);
+				//GravityCalculation.computeGPlanets(planetSystem, 2);
 				map.repaint();
 				shipStats.update();
 				rocket.burnFuel();
