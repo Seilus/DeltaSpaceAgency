@@ -54,6 +54,7 @@ public class GameStartListener implements ActionListener {
 		GameAnimation testAnim=new GameAnimation(planetSystem, rocket, testMap, shipStats);
 		menuFrame.setVisible(false);
 		okno.setVisible(true);
+		okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		testAnim.animationStart();
 	}
 
