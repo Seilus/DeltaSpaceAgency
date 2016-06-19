@@ -18,7 +18,7 @@ public class MissionSelectionClass implements ActionListener{
 @Override
 public void actionPerformed(ActionEvent e) {
 	 
-	if(menuFrame.MissionComboBox.getSelectedIndex()==1){
+	if(menuFrame.MissionComboBox.getSelectedIndex()==0){
 		 menuFrame.setMission(1);
 		
 	 }
@@ -58,14 +58,7 @@ public void actionPerformed(ActionEvent e) {
 		 menuFrame.setMission(9);
 		
 	 }
-	
-	
 
 }
-	
-	
-	
-	
-	
-	
+
 }
