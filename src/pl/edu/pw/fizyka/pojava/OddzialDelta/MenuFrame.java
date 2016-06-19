@@ -13,13 +13,13 @@ public class MenuFrame extends JFrame {
 	//the first component that appears when program is run. Allows for choosing of destination, flag
 	//and, of course, starting the mission
 		
-	 public int SelectedMission=-1;
+	  int SelectedMission;
 	 JButton GameStartButton, GameHelpButton;
 	 JLabel GameLabelStartInstructions, MissionSelection, LanguageSelection;
 	 JPanel GameHelpOtherPanel;
 	 JFrame GameHelpFrame;
 	 JTextArea HelpText;
-	 JComboBox MissionComboBox;
+	 JComboBox<?> MissionComboBox;
 	 
 	 
 	/**
@@ -40,12 +40,14 @@ public class MenuFrame extends JFrame {
 		GameHelpButton.setText(menu[4]);
 	}
 void setMission(int mission){
-		SelectedMission=mission;
+		 SelectedMission=mission;
 	}
 void setHelpInfo(String[]help){
 	HelpText.setText(help[0]);
 }
-
+//int getMission(){
+	//return SelectedMission;
+//}
 	public MenuFrame(GameStartListener startListener, LanguageChooserListener languageListener, MissionSelectionClass missionListener,HelpListener helpListener) throws HeadlessException{
 		setLayout(new GridLayout(5, 1));
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -95,11 +97,11 @@ void setHelpInfo(String[]help){
 	      MissionSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
 	      
 	     MissionComboBox=new JComboBox(languageListener.englishLang.missions);
-
+          MissionComboBox.addActionListener(missionListener);
 	    GamePanelMissionSelectionAndSomeMore.add(MissionSelection);
 	    GamePanelMissionSelectionAndSomeMore.add(MissionComboBox);
 	    
-	   	    MissionComboBox.setForeground(Color.DARK_GRAY);
+	   	MissionComboBox.setForeground(Color.DARK_GRAY);
 	    MissionComboBox.setFont(new Font("Comic Sans", Font.BOLD, 14));
 	    MissionComboBox.setBackground(Color.LIGHT_GRAY);
 	    
@@ -129,4 +131,3 @@ void setHelpInfo(String[]help){
 	    
 	}
 }	
-
