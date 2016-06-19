@@ -10,7 +10,7 @@ public class GameAnimation {
 	boolean collisionDetector;
 	Timer animation;
 	CelestialBody[] planetSystem;
-	
+	PlanetInfo planetInfo;
 	public void detectCollision(){
 		//checks whether planets have impacted each other
 		for(int ii=0; ii<planetSystem.length; ii++){
@@ -31,28 +31,35 @@ public class GameAnimation {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		//System.out.println("test");
+	
 		animation.start();
+	    
 	}
 	
-	public GameAnimation(CelestialBody[] planetSystem, Ship rocket, GameMap map, ShipStatus shipStats){
+	
+	public GameAnimation(CelestialBody[] planetSystem, Ship rocket, GameMap map, ShipStatus shipStats,PlanetInfo planetInfo){
 		this.animation=new Timer(5, null);
 		collisionDetector=false;
 		this.planetSystem=planetSystem;
-		
+	    
 		animation.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				GravityCalculation.computeGPlanets(planetSystem, 5);
+				
+				GravityCalculation.computeGPlanets(planetSystem, 1);
 				GravityCalculation.computeGShip(planetSystem, 5, rocket);
 				rocket.shipMovement(planetSystem, 5);
 				//GravityCalculation.computeGPlanets(planetSystem, 2);
 				map.repaint();
 				shipStats.update();
+				planetInfo.update();
 				rocket.burnFuel();
 				detectCollision();
+				
 			}
 			
 		});
-		
+	
 	}
 }
