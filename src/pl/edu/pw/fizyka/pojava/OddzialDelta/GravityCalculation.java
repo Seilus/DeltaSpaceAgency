@@ -39,5 +39,16 @@ public class GravityCalculation{
 		}
 		rocket.accXkmBySGrav=accXkmByS;
 		rocket.accYkmBySGrav=accYkmByS;
+	public double getDistance(CelestialBody[] planetSystem,int ii){
+		double distanceRkm=Math.sqrt(Math.pow(0-planetSystem[ii].getX(),2)+Math.pow(0-planetSystem[ii].getY(), 2));
+		return distanceRkm;
+	}
+	public double getDistanceX(CelestialBody[] planetSystem,int ii){
+		double distanceRkmX=(0-planetSystem[ii].getX());
+		return distanceRkmX;
+	}
+	public double getDistanceY(CelestialBody[] planetSystem,int ii){
+		double distanceRkmY=(0-planetSystem[ii].getY());
+		return distanceRkmY;
 	}
 }
