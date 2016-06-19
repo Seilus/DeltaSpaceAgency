@@ -4,16 +4,18 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GameStartListener implements ActionListener {
-	//Listener that calls constructors for all classes needed for the actual game
-	LanguageChooserListener languageListener;
+LanguageChooserListener languageListener;
 	LanguageSelectionEnglish englishLang;
 	LanguageSelectionPolski polishLang;
 	MenuFrame menuFrame;
-	public GameStartListener(LanguageChooserListener languageListener, LanguageSelectionEnglish englishLang, LanguageSelectionPolski polishLang){
+	GravityCalculation gravityCalculation;
+	CelestialBody[] planetSystem;
+	public GameStartListener(LanguageChooserListener languageListener, LanguageSelectionEnglish englishLang, LanguageSelectionPolski polishLang, GravityCalculation gravityCalculation){
 		this.languageListener=languageListener;
 		this.englishLang=englishLang;
 		this.polishLang=polishLang;
+		this.gravityCalculation=gravityCalculation;
+	
 		
 	}
 	
@@ -31,31 +33,40 @@ public class GameStartListener implements ActionListener {
 		
 		Ship rocket=new Ship(0, 0);
 		GameMap testMap=new GameMap(planetSystem, rocket);
-		PlanetInfo planetInfo=new PlanetInfo();
+		PlanetInfo planetInfo;
 		ShipStatus shipStats;
+		
 		if(menuFrame.languageListener.polish){
 			shipStats=new ShipStatus(rocket, polishLang.game);
+			planetInfo=new PlanetInfo(polishLang.game,polishLang.planets,gravityCalculation,planetSystem,menuFrame);
 			shipStats.setNameShip();
-			planetInfo.setNamePlanet(polishLang.game);
+			planetInfo.setNamePlanet();
 			menuFrame.setHelpInfo(polishLang.help);
 		}
 		else{
 			shipStats=new ShipStatus(rocket, englishLang.game);
+			planetInfo=new PlanetInfo(englishLang.game, englishLang.planets,gravityCalculation,planetSystem,menuFrame);
 			shipStats.setNameShip();
-			planetInfo.setNamePlanet(englishLang.game);
+			planetInfo.setNamePlanet();
 			menuFrame.setHelpInfo(englishLang.help);
 		}
 		GameHUD testHUD=new GameHUD(shipStats, planetInfo);
 		GameWindow okno=new GameWindow(testMap, testHUD, rocket);
-		
+		try{
 		KeyboardFocusManager shipKeyboardSteer= KeyboardFocusManager.getCurrentKeyboardFocusManager();
 		shipKeyboardSteer.addKeyEventDispatcher(new ShipSteeringKeyboard(rocket));
 		okno.addMouseListener(new MouseShipSteering(okno, rocket, testMap));
-		GameAnimation testAnim=new GameAnimation(planetSystem, rocket, testMap, shipStats);
+		GameAnimation testAnim=new GameAnimation(planetSystem, rocket, testMap, shipStats,planetInfo);
 		menuFrame.setVisible(false);
 		okno.setVisible(true);
 		okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		testAnim.animationStart();
+		//System.out.println(planetSystem.length);
+	}
+	catch(Exception e1){
+
+		System.err.println("Error: " + e1.getMessage());
+	}
 	}
 
 }
