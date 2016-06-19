@@ -17,7 +17,7 @@ public class MenuFrame extends JFrame {
 	//the first component that appears when program is run. Allows for choosing of destination, flag
 	//and, of course, starting the mission
 		
-	  int SelectedMission;
+	  int SelectedMission=1;
 	 JButton GameStartButton, GameHelpButton;
 	 JLabel GameLabelStartInstructions, MissionSelection, LanguageSelection;
 	 GameHelpOtherPanel GameHelpOtherPanel;
