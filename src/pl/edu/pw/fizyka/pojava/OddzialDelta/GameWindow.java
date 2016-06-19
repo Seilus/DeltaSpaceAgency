@@ -51,6 +51,7 @@ public class GameWindow extends JFrame  {
 	}
 
 	public static void main(String[] args) throws IOException {
+		
 		GravityCalculation gravityCalculation=new GravityCalculation();
 		LanguageSelectionEnglish englishLang=new LanguageSelectionEnglish();
 		LanguageSelectionPolski polishLang=new LanguageSelectionPolski();
@@ -66,4 +67,3 @@ public class GameWindow extends JFrame  {
 	}
 			
 }
-
