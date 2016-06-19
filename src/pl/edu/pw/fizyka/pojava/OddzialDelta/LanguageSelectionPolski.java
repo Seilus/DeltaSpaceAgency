@@ -29,13 +29,13 @@ public class LanguageSelectionPolski {
 			game[8]="Y odleg\u0142o\u015b\u0107 do planety";
 			
 		        
-		        help=new String[1];
-		        help[0]="W grze .... Wykonujesz misje kosmiczn\u0105. \nTwoje zadanie polega na wyl\u0105dowaniu rakiet\u0105 na planecie , wyznaczonej przez wybran\u0105 misj\u0119.\n"
+		        help=new String[2];
+		        help[0]="W grze DELTA SPACE AGENCY w1ykonujesz misje kosmiczn\u0105. \nTwoje zadanie polega na wyl\u0105dowaniu rakiet\u0105 na planecie , wyznaczonej przez wybran\u0105 misj\u0119.\n"
 +"Rakiet\u0105 steruj\u0119 si\u0119 klawiatur\u0105 (strza\u0142ki) lub myszk\u0105(zmiana k\u0105ta ruchu).\n Rakieta zacznie si\u0119 porusza\u0107 po naci\u015bni\u0119ciu przycisku Silnik.\n Paliwo rakiety jest ograniczone.\n"
 +"\nLista misji:\n"
-+"1.	Misja 1  Cel: S\u0142o\u0144ce\n"
-+"2.	Misja 2  Cel: Merkury\n"
-+"3.	Misja 3  Cel: Wenus\n"
++"1.	Misja 1  Cel: Merkury\n"
++"2.	Misja 2  Cel: Wenus\n"
++"3.	Misja 3  Cel: Ziemia\n"
 +"4.	Misja 4  Cel: Mars\n" 
 +"5.	Misja 5  Cel: Jowisz\n"
 +"6.	Misja 6  Cel: Saturn\n"
@@ -44,7 +44,7 @@ public class LanguageSelectionPolski {
 +"Ka\u017cda misja rozpoczyna si\u0119 na Ziemi.\n";
 
             planets=new String[9];
-            planets[0]="S\u0142\u0144ce";
+            planets[0]="";
 			planets[1]="Merkury";
 			planets[2]="Wenus";
 			planets[3]="Ziemia";
@@ -55,13 +55,13 @@ public class LanguageSelectionPolski {
             planets[8]="Neptun";
 		}
 }
-/*Ą - \u0104; ą - \u0105
-Ć - \u0106; ć - \u0107
-Ę - \u0118; ę - \u0119
-Ł - \u0141; ł - \u0142
-Ń - \u0143; ń - \u0144
-Ó - \u00d3; ó - \u00f3
-Ś - \u015a; ś - \u015b
-Ź - \u0179; ź - \u017a
-Ż - \u017b; ż - \u017c
+/*Ä„ - \u0104; Ä… - \u0105
+Ä† - \u0106; Ä‡ - \u0107
+Ä� - \u0118; Ä™ - \u0119
+Ĺ� - \u0141; Ĺ‚ - \u0142
+Ĺ� - \u0143; Ĺ„ - \u0144
+Ă“ - \u00d3; Ăł - \u00f3
+Ĺš - \u015a; Ĺ› - \u015b
+Ĺą - \u0179; Ĺş - \u017a
+Ĺ» - \u017b; ĹĽ - \u017c
 */
