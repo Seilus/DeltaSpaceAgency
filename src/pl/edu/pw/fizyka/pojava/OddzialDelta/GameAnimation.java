@@ -47,7 +47,7 @@ public class GameAnimation {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				GravityCalculation.computeGPlanets(planetSystem, 1);
+				GravityCalculation.computeGPlanets(planetSystem, 5);
 				GravityCalculation.computeGShip(planetSystem, 5, rocket);
 				rocket.shipMovement(planetSystem, 5);
 				//GravityCalculation.computeGPlanets(planetSystem, 2);
