@@ -19,6 +19,7 @@ public class GameWindow extends JFrame  {
 	GameHUD hud;
 	
 	
+	
 	public GameWindow(GameMap map, GameHUD hud, Ship rocket) throws HeadlessException {
 		super();
 		//creates layout
@@ -50,17 +51,18 @@ public class GameWindow extends JFrame  {
 	}
 
 	public static void main(String[] args) throws IOException {
-		
+		GravityCalculation gravityCalculation=new GravityCalculation();
 		LanguageSelectionEnglish englishLang=new LanguageSelectionEnglish();
 		LanguageSelectionPolski polishLang=new LanguageSelectionPolski();
 		LanguageChooserListener languageListener= new LanguageChooserListener (englishLang, polishLang);
-		GameStartListener startListener=new GameStartListener(languageListener, englishLang, polishLang);
+		GameStartListener startListener=new GameStartListener(languageListener, englishLang, polishLang,gravityCalculation);
 		MissionSelectionClass missionListener=new MissionSelectionClass();
 		HelpListener helpListener=new HelpListener(englishLang,polishLang);
-		MenuFrame t= new MenuFrame(startListener, languageListener,missionListener,helpListener);
-		t.setSize(640, 480); 
-		t.setVisible(true);
-		t.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		MenuFrame menuFrame= new MenuFrame(startListener, languageListener,missionListener,helpListener);
+		menuFrame.setSize(640, 480); 
+		menuFrame.setVisible(true);
+		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 			
 }
