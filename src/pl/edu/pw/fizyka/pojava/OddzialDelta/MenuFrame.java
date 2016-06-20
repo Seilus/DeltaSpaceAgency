@@ -11,12 +11,13 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class MenuFrame extends JFrame {
 	//the first component that appears when program is run. Allows for choosing of destination, flag
 	//and, of course, starting the mission
-		
+	JScrollPane scroll;
 	  int SelectedMission=1;
 	 JButton GameStartButton, GameHelpButton;
 	 JLabel GameLabelStartInstructions, MissionSelection, LanguageSelection;
@@ -25,7 +26,7 @@ public class MenuFrame extends JFrame {
 	 JTextArea HelpText;
 	 JComboBox<?> MissionComboBox;
 	 BufferedImage image;
-	 
+	 GameHelp GameHelp;
 	 
 	/**
 	 * 
@@ -118,10 +119,12 @@ class GameHelpOtherPanel extends JPanel{
 	     
 	     GameHelpFrame=new JFrame();
 	     GameHelpOtherPanel = new GameHelpOtherPanel();
-	     
+	     GameHelpOtherPanel.repaint();
 	     
 	     HelpText=new JTextArea();
-	   GameHelp  GameHelp=new GameHelp();
+	     GameHelp=new GameHelp();
+	     scroll = new JScrollPane(GameHelpOtherPanel);
+	     GameHelpFrame.add(scroll);
 	    // GamePanelTitle.setBackground(Color.GRAY);
 	     GamePanelStartInstructions.setBackground(Color.DARK_GRAY);
 	     
@@ -194,3 +197,4 @@ class GameHelpOtherPanel extends JPanel{
 	    
 	}
 }	
+
