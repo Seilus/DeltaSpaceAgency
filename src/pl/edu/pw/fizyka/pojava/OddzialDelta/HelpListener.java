@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+
 public class HelpListener implements ActionListener{
 	LanguageSelectionEnglish english;
 	LanguageSelectionPolski polish;
@@ -20,35 +22,35 @@ public class HelpListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(menuFrame.languageListener.polish){
-			
-			menuFrame.HelpText.setText(polish.help[0]);
-			menuFrame.GameHelpFrame.setSize(550,350);
-			menuFrame.HelpText.setOpaque(false);
-			menuFrame.GameHelpOtherPanel.add(menuFrame.HelpText);
-			//menuFrame.GameHelpFrame.setSize(500,300);
-			menuFrame.GameHelpFrame.add(menuFrame.GameHelpOtherPanel);
-			menuFrame.GameHelpFrame.setVisible(true);
 			menuFrame.GameHelpOtherPanel.repaint();
-		     menuFrame.GameHelpOtherPanel.setOpaque(false);
-		     menuFrame.GameHelpOtherPanel.setFont(new Font("Comic Sans", Font.BOLD, 14));
-		     menuFrame.HelpText.setForeground(Color.WHITE);
+			menuFrame.HelpText.setText(polish.help[0]);
+			 
 
 		}
 		else{
+			menuFrame.GameHelpOtherPanel.repaint();
 		menuFrame.HelpText.setText(english.help[0]);
+		
+		}
 		menuFrame.GameHelpFrame.setSize(500,300);
 		menuFrame.HelpText.setOpaque(false);
-		menuFrame.GameHelpOtherPanel.add(menuFrame.HelpText);
+		
 		//menuFrame.GameHelpFrame.setSize(500,300);
-		menuFrame.GameHelpFrame.add(menuFrame.GameHelpOtherPanel);
-		menuFrame.GameHelpFrame.setVisible(true);
+		//menuFrame.GameHelpFrame.add(menuFrame.GameHelpOtherPanel);
+		
 		menuFrame.GameHelpOtherPanel.repaint();
-	     menuFrame.GameHelpOtherPanel.setOpaque(false);
+		menuFrame.HelpText.setEditable(false);
+		menuFrame.GameHelpOtherPanel.setEnabled(false);
+		 menuFrame.GameHelpOtherPanel.setOpaque(false);
 	     menuFrame.GameHelpOtherPanel.setFont(new Font("Comic Sans", Font.BOLD, 14));
 	     menuFrame.HelpText.setForeground(Color.WHITE);
-
-		}
+	     menuFrame.GameHelpFrame.setVisible(true);
+	     menuFrame.GameHelpOtherPanel.add(menuFrame.HelpText);
+		 
+		//menuFrame.GameHelpFrame.add(menuFrame.GameHelpOtherPanel);
 		
+		
+	    
 	}
 	
 }
