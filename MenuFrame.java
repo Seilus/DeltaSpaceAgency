@@ -13,6 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+/**
+ * 
+ * @author M.S.
+ *the first component that appears when program is run. Allows for choosing of destination, language
+ *and, of course, starting the mission
+ */
 
 public class MenuFrame extends JFrame {
 	//the first component that appears when program is run. Allows for choosing of destination, flag
