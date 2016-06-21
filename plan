@@ -1,0 +1,25 @@
+1)	Interfejsy
+a)	Ekran początkowy 
+i)	Funkcjonalność przycisków
+ii)	wygląd
+b)	Ekran gry
+2)	Rakieta
+a)	Sterowanie rakietą 
+i)	Listenery zmiana kąta lotu
+b)	Wygląd rakiety
+c)	Zderzenie z planetami/lądowanie
+Zależne od prędkości
+Nie można lądować na Słońcu (no shit)
+d)	Paliwo, części rakiety
+3)	Układ słoneczny
+a)	Wygląd planet
+b)	Ruch planet/grawitacja
+c)	Przesuwanie się ekranu
+d)	Tło ekranu
+e)	Animacja
+4)	Misje
+Losowy wybór planety startu i końca lub kilka ustalonych tras
+5)	Dodatkowe rzeczy
+a)	Języki
+Polski i angielski
+
