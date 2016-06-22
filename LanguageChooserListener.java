@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 /**
  * 
  * @author MS
- *
+ *Class for choosing game language, changes language to the one selected in missioncombobox
  */
 
  public  class LanguageChooserListener implements ActionListener{
