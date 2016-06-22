@@ -67,7 +67,7 @@ public class MenuFrame extends JFrame {
 
 	class GameHelp extends JPanel{
 		private static final long serialVersionUID = 1L;
-		//przeładuj metode paintComponent
+		//przeĹ‚aduj metode paintComponent
 		@Override
 		protected  void paintComponent( Graphics g ){
 		super.paintComponent( g );
@@ -168,9 +168,9 @@ public class MenuFrame extends JFrame {
 	    GamePanelMissionSelectionAndSomeMore.add(MissionSelection);
 	    GamePanelMissionSelectionAndSomeMore.add(MissionComboBox);
 	    
-	   //	MissionComboBox.setForeground(Color.DARK_GRAY);
-	   // MissionComboBox.setFont(new Font("Comic Sans", Font.BOLD, 14));
-	    //MissionComboBox.setBackground(Color.LIGHT_GRAY);
+	   MissionComboBox.setForeground(Color.DARK_GRAY);
+	    MissionComboBox.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	  MissionComboBox.setBackground(Color.LIGHT_GRAY);
 	    
 	    
 	    LanguageSelection= new JLabel (languageListener.Langmenu[3]);
