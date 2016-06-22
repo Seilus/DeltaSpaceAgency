@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 /**
  * 
  * @author MS
- *	
+ *Class function is to manage help panel displaying information about the game	
  */
 public class HelpListener implements ActionListener{
 	
