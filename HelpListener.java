@@ -1,5 +1,7 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
@@ -24,10 +26,22 @@ public class HelpListener implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		menuFrame.GameHelpOtherPanel.add(menuFrame.HelpText);
-		menuFrame.GameHelpFrame.setSize(640,480);
-		menuFrame.GameHelpFrame.add(menuFrame.GameHelpOtherPanel);
-		menuFrame.GameHelpFrame.setVisible(true);
+		menuFrame.GameHelpFrame.setSize(600,300);
+		menuFrame.HelpText.setOpaque(false);
+		
+		//menuFrame.GameHelpFrame.setSize(500,300);
+		//menuFrame.GameHelpFrame.add(menuFrame.GameHelpOtherPanel);
+		
+		menuFrame.GameHelpOtherPanel.repaint();
+		menuFrame.HelpText.setEditable(false);
+		menuFrame.GameHelpOtherPanel.setEnabled(false);
+		Font helpFont=new Font("Tahoma", Font.BOLD, 11);
+	    menuFrame.HelpText.setForeground(Color.YELLOW);
+	    menuFrame.HelpText.setFont(helpFont);
+	     menuFrame.GameHelpFrame.setVisible(true);
+	     menuFrame.GameHelpOtherPanel.add(menuFrame.HelpText);
+		 
+		//menuFrame.GameHelpFrame.add(menuFrame.GameHelpOtherPanel);
 	}
 	
 }
