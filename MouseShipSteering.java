@@ -30,6 +30,7 @@ public class MouseShipSteering implements MouseListener {
 			public void actionPerformed(ActionEvent arg0) {
 				//function takes mouse position and gradually turns ship in the direction of the lesser angle
 				Point p=map.getMousePosition();
+				try{
 				int Y=(int) (-(p.getY()-(map.getHeight()/2)));
 				int X=(int) (p.getX()-(map.getWidth()/2));
 				double turnAngle=calculateTurn(X, Y);
@@ -50,7 +51,10 @@ public class MouseShipSteering implements MouseListener {
 					}
 				}
 				
-				
+				}catch(Exception e){
+
+					//System.err.println("Error: " + e.getMessage());
+				}
 			}
 			
 		});
