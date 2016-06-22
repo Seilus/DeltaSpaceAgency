@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 /**
  * 
  * @author MS
- *Class managing mission selection for the game
+ *Class managing mission selection for the game 
  */
 
 public class MissionSelectionClass implements ActionListener{

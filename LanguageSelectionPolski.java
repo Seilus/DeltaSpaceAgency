@@ -11,38 +11,37 @@ public class LanguageSelectionPolski {
 	String[] planets;
 	String[] landing;
 	String help;
-	//String[] missions={"Misja 1","Misja 2","Misja 3","Misja 4","Misja 5","Misja 6","Misja 7","Misja 8","Misja 9"};
-
+	
 	public LanguageSelectionPolski(){
 		menu=new String[5];
 		menu[0]="Start";
 		menu[1]="Naci\u015bnij przycisk \u017ceby rozpocz\u0105\u0107";
 		menu[2]="Wybierz misj\u0119";
 		menu[3]= "Wybierz j\u0119zyk";
-		menu[4]="Pomoc";
+		menu[4]="Pomoc dla nowych graczy!";
 		game=new String[9];
 		game[0]="SILNIK";
-		game[1]="Predko\u015bc statku";
+		game[1]="Predko\u015b\u0107 statku";
 		game[2]="Stan przepustnicy";
 		game[3]="Masa statku";
 		game[4]="Pozosta\u0142e paliwo";
 		game[5]="Cel: ";
 		game[6]="Odleg\u0142o\u015b\u0107 do celu: ";
-		game[7]="Prędkość celu: ";
-		game[8]="Odległość do słońca: "; 
+		game[7]="Pr\u0119dko\u015b\u0107 celu: ";
+		game[8]="Odleg\u0142o\u015b\u0107 do s\u0142o\u0144ca: "; 
 		help=new String();
-		help="Zagubiony w kosmosie.\nTwój statek został uszkodzony i dryfuje w przestrzeni.\nOd ciebie zależy, czy będziesz kontynuował misję, czy też powrócisz na Ziemię.\n"
-		 		+ "Wybierz planetę docelową, i kontynuuj lot\n\nUważaj jednak, gdyż obecny stan rakiety nie pozwoli na\nkontynuowanie lotu po wylądowaniu.\n"
-		 		+ "Monitoruj swoją prędkość, ponieważ system wspomagający lądowanie został wyłączony\nwięc będzie trzeba przeprowadzić lądowanie bardzo delikatnie.\n"
-		 		+ "Jeśli dasz się ponieść rozpaczy, zawsze zostaje samobójczy lot na słońce,\nlub zderzenie z planetą z dużą prędkością.\n\n"
-		 		+ "Niezależnie od wyboru, siadasz za sterami by zaznajomić się z maszyną.\n\n"
+		help="Zagubiony w kosmosie.\nTw\u00f3j statek zosta\u0142 uszkodzony i dryfuje w przestrzeni.\nOd ciebie zale\u017cy, czy b\u0119dziesz kontynuowa\u0142 misj\u0119, czy też powr\u00f3cisz na Ziemi\u0119.\n"
+		 		+ "Wybierz planet\u0119 docelow\u0105, i kontynuuj lot\n\nUwa\u017caj jednak, gdyż obecny stan rakiety nie pozwoli na\nkontynuowanie lotu po wyl\u0105dowaniu.\n"
+		 		+ "Monitoruj swoj\u0105 pr\u0119dko\u015b\u0107, ponieważ system wspomagaj\u0105cy l\u0105dowanie zosta\u0142 wy\u0142ączony\nwi\u0119c b\u0119dzie trzeba przeprowadzi\u0107 l\u0105dowanie bardzo delikatnie.\n"
+		 		+ "Je\u015bli dasz się ponieś\u0107 rozpaczy, zawsze zostaje samob\u00f3jczy lot na s\u0142o\u0144ce,\nlub zderzenie z planet\u0105 z duż\u0105 pr\u0119dkości\u0105.\n\n"
+		 		+ "Niezale\u017cnie od wyboru, siadasz za sterami by zaznajomi\u0107 si\u0119 z maszyn\u0105.\n\n"
 		 		+ "Sterowanie:\n"
-		 		+ "Strzałki- Lewo/Prawo: obrót statku, Góra/Dół: przyspiesz/zwolnij\n"
-		 		+ "Lewy przycisk myszy: obrót statku (z większą precyzją)\n"
-		 		+ "Za pomocą myszy można też sterować silnikiem i wajhą przepustnicy\n"
-		 		+ "Spacja: wyłącz/włącz silnik\n\n"
+		 		+ "Strza\u0142ki- Lewo/Prawo: obr\u00f3t statku, G\u00f3ra/D\u00f3\u0142: przyspiesz/zwolnij\n"
+		 		+ "Lewy przycisk myszy: obr\u00f3t statku (z wi\u0119ksz\u0105 precyzj\u0105)\n"
+		 		+ "Za pomoc\u0105 myszy można też sterować silnikiem i wajh\u0105 przepustnicy\n"
+		 		+ "Spacja: wy\u0142\u0105cz/w\u0142\u0105cz silnik\n\n"
 		 		+ "Radar w prawym dolnym rogu poprowadzi cię do celu\n"
-		 		+ "Zwracaj uwagę zarówno na niego, jak i na dwa monitory wyświetlające ważne informacje";
+		 		+ "Zwracaj uwag\u0119 zar\u00f3wno na niego, jak i na dwa monitory wy\u015bwietlaj\u0105ce wa\u017cne informacje";
 		planets=new String[9];
         planets[0]="S\u0142o\u0144ce";
         planets[1]="Merkury";
@@ -55,16 +54,16 @@ public class LanguageSelectionPolski {
         planets[8]="Neptun";
         
         landing=new String[10];
-		landing[0]="Tak oto dobiega końca misja, i życie załogi";
-		landing[1]="Mimo niepowodzenia misji, statek wylądował bezpiecznie";
-		landing[2]="Bez paliwa na powrót, pozostaje jedynie";
-		landing[3]= "zutylizować pozostałą część zapasów statku";
+		landing[0]="Tak oto dobiega ko\u0144ca misja, i \u017cycie za\u0142ogi";
+		landing[1]="Mimo niepowodzenia misji, statek wyl\u0105dowa\u0142 bezpiecznie";
+		landing[2]="Bez paliwa na powr\u00f3t, pozostaje jedynie";
+		landing[3]= "zutylizowa\u0107 pozosta\u0142\u0105 cz\u0119\u015b\u0107 zapas\u00f3w statku";
 		landing[4]="Gratulacje!";
-		landing[5]= "Pomimo przeszkód, misja zakończyła się sukcesem";
-		landing[6]= "Statek ratowniczy jest już w drodze";
-		landing[7]= "by zabrać załogę do domu";
-		landing[8]="I tak oto załoga wróciła do domu";
-		landing[9]="nie zaznali chwały zwycięstwa, ale uszli z życiem";
+		landing[5]= "Pomimo przeszk\u00f3d, misja zako\u0144czy\u0142a się sukcesem";
+		landing[6]= "Statek ratowniczy jest ju\u017c w drodze";
+		landing[7]= "by zabra\u0107 za\u0142og\u0119 do domu";
+		landing[8]="I tak oto za\u0142oga wr\u00f3ci\u0142a do domu";
+		landing[9]="nie zaznali chwa\u0142y zwyci\u0119stwa, ale uszli z \u017cyciem";
 		}
 }
 /*Ą - \u0104; ą - \u0105

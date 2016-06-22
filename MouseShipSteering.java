@@ -31,30 +31,29 @@ public class MouseShipSteering implements MouseListener {
 				//function takes mouse position and gradually turns ship in the direction of the lesser angle
 				Point p=map.getMousePosition();
 				try{
-				int Y=(int) (-(p.getY()-(map.getHeight()/2)));
-				int X=(int) (p.getX()-(map.getWidth()/2));
-				double turnAngle=calculateTurn(X, Y);
-				if(Math.abs(rocket.getAngle()-turnAngle)<180){
-					if((rocket.getAngle()-turnAngle)>2){
-						rocket.turnShip(-1);
+					int Y=(int) (-(p.getY()-(map.getHeight()/2)));
+					int X=(int) (p.getX()-(map.getWidth()/2));
+					double turnAngle=calculateTurn(X, Y);
+					if(Math.abs(rocket.getAngle()-turnAngle)<180){
+						if((rocket.getAngle()-turnAngle)>2){
+							rocket.turnShip(-1);
+						}
+						else if((rocket.getAngle()-turnAngle)<-2){
+							rocket.turnShip(1);
+						}
 					}
-					else if((rocket.getAngle()-turnAngle)<-2){
-						rocket.turnShip(1);
+					else{
+						if((rocket.getAngle()-turnAngle)>2){
+							rocket.turnShip(1);
+						}
+						else if((rocket.getAngle()-turnAngle)<-2){
+							rocket.turnShip(-1);
+						}
 					}
-				}
-				else{
-					if((rocket.getAngle()-turnAngle)>2){
-						rocket.turnShip(1);
-					}
-					else if((rocket.getAngle()-turnAngle)<-2){
-						rocket.turnShip(-1);
-					}
+				}catch(Exception e){
+					
 				}
 				
-				}catch(Exception e){
-
-					//System.err.println("Error: " + e.getMessage());
-				}
 			}
 			
 		});

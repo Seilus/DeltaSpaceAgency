@@ -17,7 +17,7 @@ public class LanguageSelectionEnglish {
 			menu[1]="Press button to start";
 			menu[2]="Choose misson";
 			menu[3]	= "Choose language";
-			menu[4]="Help";
+			menu[4]="New player help!";
 
 			game=new String[9];
 			game[0]="ENGINE";

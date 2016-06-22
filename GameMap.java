@@ -31,8 +31,7 @@ public class GameMap extends JPanel {
 	private int planetLandedOn;
 	private String[] landingMessages;
 	public GameMap(CelestialBody[] planetarySystem, Ship rocket, String[] landingMessages) {
-		landingStatus=3;
-		planetLandedOn=5;
+		landingStatus=0;
 		this.landingMessages=landingMessages;
 		planetSystem=planetarySystem;	
 		Dimension pref=new Dimension(1200, 510);
@@ -47,65 +46,56 @@ public class GameMap extends JPanel {
 			starsLocationY[ii]=stars.nextInt(1200);
 		}
 
-		File imageFile = new File("sun.png");
 		try {
-			image = ImageIO.read(imageFile);
+			image =ImageIO.read(getClass().getResource("/resources/sun.png"));
 		} catch (IOException e) {
 			System.err.println("Blad odczytu obrazka");
 			e.printStackTrace();
 		}
-		File imageFile1 = new File("mercury.png");
 		try {
-			image1 = ImageIO.read(imageFile1);
+			image1 = ImageIO.read(getClass().getResource("/resources/mercury.png"));
 		} catch (IOException e) {
 			System.err.println("Blad odczytu obrazka");
 			e.printStackTrace();
 		}
-		File imageFile2 = new File("venus.png");
 		try {
-			image2 = ImageIO.read(imageFile2);
+			image2 = ImageIO.read(getClass().getResource("/resources/venus.png"));
 		} catch (IOException e) {
 			System.err.println("Blad odczytu obrazka");
 			e.printStackTrace();
 		}
-		File imageFile3 = new File("Earth.png");
 		try {
-			image3 = ImageIO.read(imageFile3);
+			image3 = ImageIO.read(getClass().getResource("/resources/Earth.png"));
 		} catch (IOException e) {
 			System.err.println("Blad odczytu obrazka");
 			e.printStackTrace();
 		}
-		File imageFile4 = new File("Mars.png");
 		try {
-			image4 = ImageIO.read(imageFile4);
+			image4 = ImageIO.read(getClass().getResource("/resources/Mars.png"));
 		} catch (IOException e) {
 			System.err.println("Blad odczytu obrazka");
 			e.printStackTrace();
 		}
-		File imageFile5 = new File("Jupiter.png");
 		try {
-			image5 = ImageIO.read(imageFile5);
+			image5 = ImageIO.read(getClass().getResource("/resources/Jupiter.png"));
 		} catch (IOException e) {
 			System.err.println("Blad odczytu obrazka");
 			e.printStackTrace();
 		}
-		File imageFile6 = new File("Saturn.png");
 		try {
-			image6 = ImageIO.read(imageFile6);
+			image6 = ImageIO.read(getClass().getResource("/resources/Saturn.png"));
 		} catch (IOException e) {
 			System.err.println("Blad odczytu obrazka");
 			e.printStackTrace();
 		}
-		File imageFile7 = new File("Uranus.png");
 		try {
-			image7 = ImageIO.read(imageFile7);
+			image7 = ImageIO.read(getClass().getResource("/resources/Uranus.png"));
 		} catch (IOException e) {
 			System.err.println("Blad odczytu obrazka");
 			e.printStackTrace();
 		}
-		File imageFile8 = new File("Neptune.png");
 		try {
-			image8 = ImageIO.read(imageFile8);
+			image8 = ImageIO.read(getClass().getResource("/resources/Neptune.png"));
 		} catch (IOException e) {
 			System.err.println("Blad odczytu obrazka");
 			e.printStackTrace();

@@ -54,7 +54,7 @@ public class GameStartListener implements ActionListener {
 		if(menuFrame.languageListener.polish){
 			shipStats=new ShipStatus(rocket, polishLang.game);
 			shipStats.setNameShip();
-			planetInfo=new PlanetInfo(planetSystem, polishLang.game, menuFrame.getMission());
+			planetInfo=new PlanetInfo(planetSystem, polishLang.game, polishLang.planets, menuFrame.getMission());
 			planetInfo.setNamePlanet();
 			testMap=new GameMap(planetSystem, rocket, polishLang.landing);
 			menuFrame.setHelpInfo(polishLang.help);
@@ -63,7 +63,7 @@ public class GameStartListener implements ActionListener {
 		else{
 			shipStats=new ShipStatus(rocket, englishLang.game);
 			shipStats.setNameShip();
-			planetInfo=new PlanetInfo(planetSystem, englishLang.game, menuFrame.getMission());
+			planetInfo=new PlanetInfo(planetSystem, englishLang.game, englishLang.planets, menuFrame.getMission());
 			planetInfo.setNamePlanet();
 			testMap=new GameMap(planetSystem, rocket, englishLang.landing);
 			menuFrame.setHelpInfo(englishLang.help);

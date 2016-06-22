@@ -24,9 +24,10 @@ public class PlanetInfo extends JPanel {
 	JTextArea planetInfo;
 	DecimalFormat format;
 	String[] game;
+	String[] planets;
     void setNamePlanet(){
     	format=new DecimalFormat("#.##");
-		planetInfo.setText("\n"+game[5]+"\n"+game[6]+format.format(Math.sqrt(Math.pow(xDistanceToTarget, 2)+Math.pow(yDistanceToTarget, 2))-planetSystem[destination].getRadius())+"\n"+game[7]+format.format(Math.sqrt(Math.pow(planetSystem[destination].getSpeedX(), 2)+Math.pow(planetSystem[destination].getSpeedY(), 2)))+"\n"+game[8]+format.format(Math.sqrt(Math.pow(planetSystem[0].getX(), 2)+Math.pow(planetSystem[0].getY(), 2)))+"\n");
+		planetInfo.setText("\n"+game[5]+" "+planets[destination]+"\n"+game[6]+format.format(Math.sqrt(Math.pow(xDistanceToTarget, 2)+Math.pow(yDistanceToTarget, 2))-planetSystem[destination].getRadius())+"\n"+game[7]+format.format(Math.sqrt(Math.pow(planetSystem[destination].getSpeedX(), 2)+Math.pow(planetSystem[destination].getSpeedY(), 2)))+"\n"+game[8]+format.format(Math.sqrt(Math.pow(planetSystem[0].getX(), 2)+Math.pow(planetSystem[0].getY(), 2)))+"\n");
 	}
     
     public void setDistance(){
@@ -34,9 +35,10 @@ public class PlanetInfo extends JPanel {
     	yDistanceToTarget=planetSystem[destination].getY();
     }
     
-	public PlanetInfo(CelestialBody[] planetSystem, String[] game, int destination) {
+	public PlanetInfo(CelestialBody[] planetSystem, String[] game, String[] planets, int destination) {
 		this.planetSystem=planetSystem;
 		this.game=game;
+		this.planets=planets;
 		this.destination=destination;
 		setLayout(new FlowLayout(2));
 		setBackground(Color.DARK_GRAY);

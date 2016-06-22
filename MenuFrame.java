@@ -2,6 +2,9 @@ package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -67,12 +70,16 @@ public class MenuFrame extends JFrame {
 
 	class GameHelp extends JPanel{
 		private static final long serialVersionUID = 1L;
-		//przeĹ‚aduj metode paintComponent
+		//przeładuj metode paintComponent
 		@Override
 		protected  void paintComponent( Graphics g ){
-		super.paintComponent( g );
-		Image im = getToolkit().getImage("tech_detail.jpg");
-		g.drawImage( im, 0, 0, this );
+			super.paintComponent( g );
+			Image tech = null;
+			try {
+				tech = ImageIO.read(getClass().getResource("/resources/tech_detail.jpg"));
+			} catch (IOException e) {
+			}
+			g.drawImage( tech, 0, 0, this );
 		}
 	}
 	class GamePanelTitle extends JPanel{
@@ -82,7 +89,13 @@ public class MenuFrame extends JFrame {
 		@Override
 		protected  void paintComponent( Graphics g ){
 		super.paintComponent( g );
-		Image imi = getToolkit().getImage("deltaspacetitle.png");
+		Image imi = null;
+		try {
+			imi = ImageIO.read(getClass().getResource("/resources/deltaspacetitle.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		g.drawImage( imi, 0, 0, this );
 		}
 	}
@@ -93,8 +106,12 @@ public class MenuFrame extends JFrame {
 		@Override
 		protected  void paintComponent( Graphics g ){
 		super.paintComponent(g);
-	  	Image imi2 = getToolkit().getImage("free_space_galaxy_texture_by_lyshastra-d77gofi.png");
-	  	g.drawImage( imi2, 0, 0, this );
+	  	Image galaxy= null;
+		try {
+			galaxy = ImageIO.read(getClass().getResource("/resources/galaxy.png"));
+		} catch (IOException e) {
+		}
+	  	g.drawImage( galaxy, 0, 0, this );
 		}
 	}
 	public MenuFrame(GameStartListener startListener, LanguageChooserListener languageListener, MissionSelectionClass missionListener,HelpListener helpListener) throws HeadlessException{
@@ -129,7 +146,7 @@ public class MenuFrame extends JFrame {
 	    GameHelp=new GameHelp();
 	    scroll = new JScrollPane(GameHelpOtherPanel);
 	    GameHelpFrame.add(scroll);
-	    //GamePanelTitle.setBackground(Color.GRAY);
+	    GamePanelTitle.setBackground(Color.GRAY);
 	    GamePanelStartInstructions.setBackground(Color.DARK_GRAY);
 	     
 	    GamePanelStart.setBackground(Color.DARK_GRAY);
@@ -159,18 +176,18 @@ public class MenuFrame extends JFrame {
 	    MissionSelection= new JLabel (languageListener.Langmenu[2]);
 	    MissionSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
 	    MissionSelection.setForeground(Color.LIGHT_GRAY);
-	   MissionComboBox=new JComboBox<String>();
-	   modelMission=(MutableComboBoxModel<String>)MissionComboBox.getModel();
-	   for(int ii=0; ii<9; ii++){
-	 	modelMission.addElement(languageListener.planets[ii]);		
-	   }
-       // MissionComboBox.addActionListener(missionListener);
+	    MissionComboBox=new JComboBox<String>();
+	    modelMission=(MutableComboBoxModel<String>)MissionComboBox.getModel();
+	    for(int ii=0; ii<9; ii++){
+	    	modelMission.addElement(languageListener.planets[ii]);		
+	    }
+	    MissionComboBox.addActionListener(missionListener);
 	    GamePanelMissionSelectionAndSomeMore.add(MissionSelection);
 	    GamePanelMissionSelectionAndSomeMore.add(MissionComboBox);
 	    
-	   MissionComboBox.setForeground(Color.DARK_GRAY);
+	    MissionComboBox.setForeground(Color.DARK_GRAY);
 	    MissionComboBox.setFont(new Font("Comic Sans", Font.BOLD, 14));
-	  MissionComboBox.setBackground(Color.LIGHT_GRAY);
+	    MissionComboBox.setBackground(Color.LIGHT_GRAY);
 	    
 	    
 	    LanguageSelection= new JLabel (languageListener.Langmenu[3]);
