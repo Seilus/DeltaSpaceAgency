@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 /**
  * 
  * @author MS
- *Class for choosing game language, changes language to the one selected in missioncombobox
+ *Class managing mission selection for the game
  */
 
 public class MissionSelectionClass implements ActionListener{
