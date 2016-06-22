@@ -2,7 +2,7 @@ package pl.edu.pw.fizyka.pojava.OddzialDelta;
 /**
  * 
  * @author MS
- *
+ *English language class, containing all needed text in this language
  */
 public class LanguageSelectionEnglish {
 	String[]  menu;	
