@@ -1,34 +1,34 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
-import java.awt.Color;
-
+/**
+ * 
+ * @author KM & MS
+ *class represents a single celestial body, so, in our program: a planet or star
+ */
 public class CelestialBody {
-	//class represents a single celestial body, so in our program a planet or star
 	
-	private double massT;
+	private double massMicroEarth;
 	//initial velocities and location; X & Y components
 	private double speedXkmBys;
 	private double speedYkmBys;
 	private double positionXkm;
 	private double positionYkm;
 	private int radiuskm;
-	public Color color=Color.BLUE;
+	
 	CelestialBody(){
-		massT=0;
+		massMicroEarth=0;
 		speedXkmBys=0;
 		speedYkmBys=0;
 		positionXkm=0;
 		positionYkm=0;
-		
 	}
-	CelestialBody(double initMass, double initSpeedX, double initSpeedY, int initPosX, int initPosY, int radius,Color initColor){
-		massT=initMass;
+	CelestialBody(double initMass, double initSpeedX, double initSpeedY, int initPosX, int initPosY, int radius){
+		massMicroEarth=initMass;
 		speedXkmBys=initSpeedX;
 		speedYkmBys=initSpeedY;
 		positionXkm=initPosX;
 		positionYkm=initPosY;
 		radiuskm=radius;
-		color=initColor;
 	}
 	public double getX(){
 		return positionXkm;	
@@ -50,21 +50,18 @@ public class CelestialBody {
 		return speedYkmBys;
 	}	
 	public double getMass(){
-		return massT;
+		return massMicroEarth;
 	}
 	public int getRadius(){
 		return radiuskm;
 	}
-	public Color getColor(){
-		return color;
-	}
 	//two methods called when there is a change in forces (gravity movement)
 	public void movementX(double speedChangeX, int frequency){
 		speedXkmBys+=speedChangeX;
-		positionXkm+=(speedXkmBys/frequency);	
+		positionXkm+=speedXkmBys/frequency;	
 	}
 	public void movementY(double speedChangeY, int frequency){
 		speedYkmBys+=speedChangeY;
-		positionYkm+=(speedYkmBys/frequency);
+		positionYkm+=speedYkmBys/frequency;
 	}
 }

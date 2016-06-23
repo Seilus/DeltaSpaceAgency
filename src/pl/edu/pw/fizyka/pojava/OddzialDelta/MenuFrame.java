@@ -2,7 +2,6 @@ package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -13,24 +12,28 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.MutableComboBoxModel;
+/**
+ * 
+ * @author M.S.
+ *the first component that appears when program is run. Allows for choosing of destination, language
+ *and, of course, starting the mission
+ */
 
 public class MenuFrame extends JFrame {
-	//the first component that appears when program is run. Allows for choosing of destination, flag
-	//and, of course, starting the mission
+		
 	JScrollPane scroll;
-	  int SelectedMission=1;
-	 JButton GameStartButton, GameHelpButton;
-	 JLabel GameLabelStartInstructions, MissionSelection, LanguageSelection;
-	 GameHelpOtherPanel GameHelpOtherPanel;
-	 JFrame GameHelpFrame;
-	 JTextArea HelpText;
-	 JComboBox<?> MissionComboBox;
-	 BufferedImage image;
-	 GameHelp GameHelp;
+	int SelectedMission=1;
+	JButton GameStartButton, GameHelpButton;
+	JLabel GameLabelStartInstructions, MissionSelection, LanguageSelection;
+	GameHelpOtherPanel GameHelpOtherPanel;
+	JFrame GameHelpFrame;
+	JTextArea HelpText;
+	JComboBox<String> MissionComboBox;
+	MutableComboBoxModel<String> modelMission;
+	BufferedImage image;
+	GameHelp GameHelp;
 	 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	LanguageChooserListener languageListener; 
@@ -38,6 +41,15 @@ public class MenuFrame extends JFrame {
 	MissionSelectionClass missionListener;
 	HelpListener helpListener;
 	
+	
+	public void setMissionBox(){
+		for(int jj=0; jj<9; jj++){
+			modelMission.removeElementAt(8-jj);
+		}
+		for(int ii=0; ii<9; ii++){
+			modelMission.addElement(languageListener.planets[ii]);
+		}
+	}	
 	void setName(String menu[]){
 		GameStartButton.setText(menu[0]);
 		GameLabelStartInstructions.setText(menu[1]);
@@ -45,127 +57,135 @@ public class MenuFrame extends JFrame {
 		LanguageSelection.setText(menu[3]);
 		GameHelpButton.setText(menu[4]);
 	}
-void setMission(int mission){
+	void setMission(int mission){
 		 SelectedMission=mission;
 	}
-void setHelpInfo(String[]help){
-	HelpText.setText(help[0]);
-}
-//int getMission(){
-	//return SelectedMission;
-//}
+	void setHelpInfo(String help){
+		HelpText.setText(help);
+	}
 
-class GameHelp extends JPanel{
-    //przeladoj metode paintComponent
-	
-    @Override
-    protected  void paintComponent( Graphics g ){
-         super.paintComponent( g );
-        Image im = getToolkit().getImage("tech_detail_bump_map_texture_preview.jpg");
-        // g.drawImage(image, 0,0,this);
-        g.drawImage( im, 0, 0, this );
-     }
-}
-class GamePanelTitle extends JPanel{
-    //przeladoj metode paintComponent
-	
-    @Override
-    protected  void paintComponent( Graphics g ){
-         super.paintComponent( g );
-        Image imi = getToolkit().getImage("deltaspacetitle.png");
-        // g.drawImage(image, 0,0,this);
-       g.drawImage( imi, 0, 0, this );
-     }
-}
-class GameHelpOtherPanel extends JPanel{
-    //przeladoj metode paintComponent
-	
-    @Override
-    protected  void paintComponent( Graphics g ){
-         super.paintComponent( g );
-       Image imi2 = getToolkit().getImage("free_space_galaxy_texture_by_lyshastra-d77gofi.png");
-        // g.drawImage(image, 0,0,this);
-       g.drawImage( imi2, 0, 0, this );
-     }
-}
-	public MenuFrame(GameStartListener startListener, LanguageChooserListener languageListener, MissionSelectionClass missionListener,HelpListener helpListener) throws HeadlessException{
-		/*File imageFile = new File("Saturnx.png");
+	int getMission(){
+		return SelectedMission;
+	}
+
+	class GameHelp extends JPanel{
+		private static final long serialVersionUID = 1L;
+		//prze³aduj metode paintComponent
+		@Override
+		protected  void paintComponent( Graphics g ){
+			super.paintComponent( g );
+			Image tech = null;
+			try {
+				tech = ImageIO.read(getClass().getResource("/tech_detail.jpg"));
+			} catch (IOException e) {
+			}
+			g.drawImage( tech, 0, 0, this );
+		}
+	}
+	class GamePanelTitle extends JPanel{
+		//przeladuj metode paintComponent
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		protected  void paintComponent( Graphics g ){
+		super.paintComponent( g );
+		Image imi = null;
 		try {
-			image = ImageIO.read(imageFile);
+			imi = ImageIO.read(getClass().getResource("/deltaspacetitle.png"));
 		} catch (IOException e) {
-			System.err.println("Blad odczytu obrazka");
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
+		g.drawImage( imi, 0, 0, this );
+		}
+	}
+	class GameHelpOtherPanel extends JPanel{
+		private static final long serialVersionUID = 1L;
+
+		//przeladuj metode paintComponent
+		@Override
+		protected  void paintComponent( Graphics g ){
+		super.paintComponent(g);
+	  	Image galaxy= null;
+		try {
+			galaxy = ImageIO.read(getClass().getResource("/galaxy.png"));
+		} catch (IOException e) {
+		}
+	  	g.drawImage( galaxy, 0, 0, this );
+		}
+	}
+	public MenuFrame(GameStartListener startListener, LanguageChooserListener languageListener, MissionSelectionClass missionListener,HelpListener helpListener) throws HeadlessException{
 		
 		setLayout(new GridLayout(5, 1));
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-	     GamePanelTitle GamePanelTitle=new GamePanelTitle();
-	     
-	     this.startListener=startListener;
-	     this.languageListener=languageListener;
-	     this.languageListener.setMenuFrame(this);
-	     this.startListener.setMenuFrame(this);
-	     this.helpListener=helpListener;
-	     this.helpListener.setMenuFrame(this);
-	     this.missionListener=missionListener;
-	     this.missionListener.setMenuFrame(this);
-	     
+	    GamePanelTitle GamePanelTitle=new GamePanelTitle();
+	    HelpText=new JTextArea();
+	    HelpText.setEditable(false);
+	    Font helpFont=new Font("Tahoma", Font.BOLD, 11);
+	    HelpText.setForeground(Color.YELLOW);
+	    HelpText.setFont(helpFont);
+	    HelpText.setOpaque(false);
+	    this.startListener=startListener;
+	    this.languageListener=languageListener;
+	    this.languageListener.setMenuFrame(this);
+	    this.startListener.setMenuFrame(this);
+	    this.helpListener=helpListener;
+	    this.helpListener.setMenuFrame(this);
+	    this.missionListener=missionListener;
+	    this.missionListener.setMenuFrame(this);
+	    
 	    
 	   
-	     JPanel GamePanelStartInstructions= new JPanel();
-	     JPanel GamePanelStart= new JPanel();
-	     JPanel GamePanelMissionSelectionAndSomeMore= new JPanel();
-	     
-	     GameHelpFrame=new JFrame();
-	     GameHelpOtherPanel = new GameHelpOtherPanel();
-	     GameHelpOtherPanel.repaint();
-	     
-	     HelpText=new JTextArea();
-	     GameHelp=new GameHelp();
-	     scroll = new JScrollPane(GameHelpOtherPanel);
-	     GameHelpFrame.add(scroll);
-	    // GamePanelTitle.setBackground(Color.GRAY);
-	     GamePanelStartInstructions.setBackground(Color.DARK_GRAY);
-	     
-	     GamePanelStart.setBackground(Color.DARK_GRAY);
+	    JPanel GamePanelStartInstructions= new JPanel();
+	    JPanel GamePanelStart= new JPanel();
+	    JPanel GamePanelMissionSelectionAndSomeMore= new JPanel();
 	    
-	     GamePanelMissionSelectionAndSomeMore.setBackground(Color.DARK_GRAY);
+	    GameHelpFrame=new JFrame();
+	    GameHelpOtherPanel = new GameHelpOtherPanel();
+	    GameHelpOtherPanel.repaint(); 
+	    GameHelp=new GameHelp();
+	    scroll = new JScrollPane(GameHelpOtherPanel);
+	    GameHelpFrame.add(scroll);
+	    GamePanelTitle.setBackground(Color.GRAY);
+	    GamePanelStartInstructions.setBackground(Color.DARK_GRAY);
+	     
+	    GamePanelStart.setBackground(Color.DARK_GRAY);
+	    
+	    GamePanelMissionSelectionAndSomeMore.setBackground(Color.DARK_GRAY);
 	 
 	     
-	     GameHelp.repaint();
-         GameHelp.setOpaque(false);
-         
-         GamePanelTitle.repaint();
-         GamePanelTitle.setOpaque(false);
-	 					 				
-	 		
-	 		
-	    // JLabel GameTitle=new JLabel("DELTA Space Agency");
-	     //GameTitle.setFont(new Font("Comic Sans", Font.BOLD, 20));	
-	     //GamePanelTitle.add(GameTitle);
+	    GameHelp.repaint();
+	    GameHelp.setOpaque(false);
+       
+	    GamePanelTitle.repaint();
+	    GamePanelTitle.setOpaque(false);
+	    
+	    GameStartButton=new JButton(languageListener.Langmenu[0]);
+	    GameStartButton.setForeground(Color.DARK_GRAY);
+	    GameStartButton.setBackground(Color.LIGHT_GRAY);
 	     
-	     GameStartButton=new JButton(languageListener.Langmenu[0]);
-	     GameStartButton.setForeground(Color.DARK_GRAY);
-	     GameStartButton.setBackground(Color.LIGHT_GRAY);
-	      
-	     GameLabelStartInstructions= new JLabel (languageListener.Langmenu[1]);
-         GameLabelStartInstructions.setFont(new Font("Comic Sans", Font.BOLD, 14));
-         GameLabelStartInstructions.setForeground(Color.LIGHT_GRAY);
-         GamePanelStartInstructions.add(GameLabelStartInstructions);
-         GameStartButton.addActionListener(startListener);
-	     GamePanelStart.add(GameStartButton);
+	    GameLabelStartInstructions= new JLabel (languageListener.Langmenu[1]);
+	    GameLabelStartInstructions.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	    GameLabelStartInstructions.setForeground(Color.LIGHT_GRAY);
+	    GamePanelStartInstructions.add(GameLabelStartInstructions);
+	    GameStartButton.addActionListener(missionListener);
+	    GameStartButton.addActionListener(startListener);
+	    GamePanelStart.add(GameStartButton);
 	      
 	 
-	      MissionSelection= new JLabel (languageListener.Langmenu[2]);
-	      MissionSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
-	      MissionSelection.setForeground(Color.LIGHT_GRAY);
-	     MissionComboBox=new JComboBox(languageListener.englishLang.missions);
-          MissionComboBox.addActionListener(missionListener);
+	    MissionSelection= new JLabel (languageListener.Langmenu[2]);
+	    MissionSelection.setFont(new Font("Comic Sans", Font.BOLD, 14));
+	    MissionSelection.setForeground(Color.LIGHT_GRAY);
+	    MissionComboBox=new JComboBox<String>();
+	    modelMission=(MutableComboBoxModel<String>)MissionComboBox.getModel();
+	    for(int ii=0; ii<9; ii++){
+	    	modelMission.addElement(languageListener.planets[ii]);		
+	    }
+	    MissionComboBox.addActionListener(missionListener);
 	    GamePanelMissionSelectionAndSomeMore.add(MissionSelection);
 	    GamePanelMissionSelectionAndSomeMore.add(MissionComboBox);
 	    
-	   	MissionComboBox.setForeground(Color.DARK_GRAY);
+	    MissionComboBox.setForeground(Color.DARK_GRAY);
 	    MissionComboBox.setFont(new Font("Comic Sans", Font.BOLD, 14));
 	    MissionComboBox.setBackground(Color.LIGHT_GRAY);
 	    
@@ -187,14 +207,15 @@ class GameHelpOtherPanel extends JPanel{
 	    GameHelpButton.setBackground(Color.LIGHT_GRAY);
 	    GameHelpButton.addActionListener(helpListener);
 	    GameHelp.add(GameHelpButton);
-	      
-	     this.revalidate();
-	     this.add(GamePanelTitle);
-	     this.add(GamePanelStartInstructions);
-	     this.add(GamePanelStart);
-	     this.add(GamePanelMissionSelectionAndSomeMore);
-	     this.add(GameHelp);
+	    GameHelpFrame.setSize(640,480);
+	    this.revalidate();
+	    this.add(GamePanelTitle);
+	    this.add(GamePanelStartInstructions);
+	    this.add(GamePanelStart);
+	    this.add(GamePanelMissionSelectionAndSomeMore);
+	    this.add(GameHelp);
+	    this.setResizable(false);
 	    
 	}
-}	
+} 
 

@@ -4,9 +4,13 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
-
+/**
+ * 
+ * @author KM
+ * The lower part of the game window- holds information about the game, as well as ship controls
+ */
 public class GameHUD extends JPanel {
-	//The lower part of the game window- holds information about the game, as well as ship controls
+	
 	private static final long serialVersionUID = 1L;
 	
 	public GameHUD(ShipStatus sStats, PlanetInfo pInfo) {

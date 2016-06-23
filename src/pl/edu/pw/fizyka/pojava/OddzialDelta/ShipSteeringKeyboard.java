@@ -2,11 +2,13 @@ package pl.edu.pw.fizyka.pojava.OddzialDelta;
 
 import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
-
+/**
+ * 
+ * @author KM & MS
+ *listener for steering the ship with arrow keys 
+ */
 public class ShipSteeringKeyboard implements KeyEventDispatcher {
-	//listener for steering the ship with arrow keys 
 	Ship rocket;
-
 	
 	public boolean dispatchKeyEvent(KeyEvent e) {
 		// TODO Auto-generated method stub

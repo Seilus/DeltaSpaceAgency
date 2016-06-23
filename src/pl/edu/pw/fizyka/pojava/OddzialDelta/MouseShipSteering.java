@@ -5,67 +5,61 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.SQLException;
 
 import javax.swing.Timer;
-
-public class MouseShipSteering implements MouseListener  {
-	//class holds listeners responsible for making the ship turn constantly while mouse button is being held
+/**
+ * 
+ * @author KM
+ *class holds listeners responsible for making the ship turn constantly while mouse button is being held
+ */
+public class MouseShipSteering implements MouseListener {
 	GameWindow okno;
 	GameMap map;
 	Ship rocket;
 	Timer turn;
 	public MouseShipSteering(GameWindow okno, Ship rocket, GameMap map){
-		try{
 		this.okno=okno;
 		this.map=map;
 		this.rocket=rocket;
 		//timer allows for constant turning while mouse button is held
 		Timer turn=new Timer(30, null);
 		this.turn=turn;
-		}catch(NullPointerException e){
-
-			System.err.println("Error: " + e.getMessage());
-		}
 		turn.addActionListener(new ActionListener(){
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				//function takes mouse position and gradually turns ship in the direction of the lesser angle
-				try{
 				Point p=map.getMousePosition();
-				int Y=(int) (-(p.getY()-(map.getHeight()/2)));
-				int X=(int) (p.getX()-(map.getWidth()/2));
-				double turnAngle=calculateTurn(X, Y);
-				if(Math.abs(rocket.getAngle()-turnAngle)<180){
-					if((rocket.getAngle()-turnAngle)>2){
-						rocket.turnShip(-1);
+				try{
+					int Y=(int) (-(p.getY()-(map.getHeight()/2)));
+					int X=(int) (p.getX()-(map.getWidth()/2));
+					double turnAngle=calculateTurn(X, Y);
+					if(Math.abs(rocket.getAngle()-turnAngle)<180){
+						if((rocket.getAngle()-turnAngle)>2){
+							rocket.turnShip(-1);
+						}
+						else if((rocket.getAngle()-turnAngle)<-2){
+							rocket.turnShip(1);
+						}
 					}
-					else if((rocket.getAngle()-turnAngle)<-2){
-						rocket.turnShip(1);
+					else{
+						if((rocket.getAngle()-turnAngle)>2){
+							rocket.turnShip(1);
+						}
+						else if((rocket.getAngle()-turnAngle)<-2){
+							rocket.turnShip(-1);
+						}
 					}
-				}
-				else{
-					if((rocket.getAngle()-turnAngle)>2){
-						rocket.turnShip(1);
-					}
-					else if((rocket.getAngle()-turnAngle)<-2){
-						rocket.turnShip(-1);
-					}
+				}catch(Exception e){
+					
 				}
 				
-			
-			
-			}catch(Exception e){
-
-				//System.err.println("Error: " + e.getMessage());
 			}
-			}
+			
 		});
-		
-		
 	}
-		@Override
+	
+	@Override
 	public void mouseClicked(MouseEvent m) {
 	}
 
@@ -79,22 +73,12 @@ public class MouseShipSteering implements MouseListener  {
 
 	@Override
 	public void mousePressed(MouseEvent m) {
-		try{
 		turn.start();
-		}catch(NullPointerException e){
-
-			System.err.println("Error: " + e.getMessage());
-		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		try{
 		turn.stop();
-		}catch(NullPointerException e){
-
-			System.err.println("Error: " + e.getMessage());
-		}
 	}
 	
 	private double calculateTurn(int xCoordinate, int yCoordinate){
@@ -108,6 +92,5 @@ public class MouseShipSteering implements MouseListener  {
 		return turnAngle;
 		
 	}
-}
-	
 
+}

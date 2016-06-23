@@ -5,9 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-
+/**
+ * 
+ * @author KM
+ *Listener responsible for turning the engine on/off and switching button color
+ */
 public class EngineToggleListener implements ActionListener {
-	//Listener responsible for turning the engine on/off and switching button color
 	Ship rocket;
 	JButton button;
 	@Override
