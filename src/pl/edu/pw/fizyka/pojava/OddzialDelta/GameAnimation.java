@@ -4,13 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
-
+/**
+ * 
+ * @author KM
+ *Class responsible for calling calculations concerning gravity and landings and animation 
+ */
 public class GameAnimation {
-	//Class responsible for calling calculations concerning gravity and landings and animation 
+
 	boolean collisionDetector;
+	boolean landed;
 	Timer animation;
 	CelestialBody[] planetSystem;
-	PlanetInfo planetInfo;
+	
 	public void detectCollision(){
 		//checks whether planets have impacted each other
 		for(int ii=0; ii<planetSystem.length; ii++){
@@ -18,7 +23,8 @@ public class GameAnimation {
 				if(jj!=ii){
 					if(Math.sqrt(Math.pow((planetSystem[jj].getX())-(planetSystem[ii].getX()), 2)+Math.pow((planetSystem[jj].getY())-(planetSystem[ii].getY()), 2))<=((planetSystem[jj].getRadius())+(planetSystem[ii].getRadius()))){
 						collisionDetector=true;
-						//animation.stop();
+						animation.stop();
+						System.out.println("Error: Because of disturbance in the fabric of the Universe you are unable to continue your mission. Try again");
 					}	
 				}	
 			}
@@ -31,35 +37,33 @@ public class GameAnimation {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		//System.out.println("test");
-	
 		animation.start();
-	    
 	}
 	
-	
-	public GameAnimation(CelestialBody[] planetSystem, Ship rocket, GameMap map, ShipStatus shipStats,PlanetInfo planetInfo){
+	public GameAnimation(CelestialBody[] planetSystem, Ship rocket, GameMap map, ShipStatus shipStats, PlanetInfo planetInfo){
 		this.animation=new Timer(5, null);
+		landed=false;
 		collisionDetector=false;
 		this.planetSystem=planetSystem;
-	    
+		
 		animation.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				GravityCalculation.computeGPlanets(planetSystem, 5);
-				GravityCalculation.computeGShip(planetSystem, 5, rocket);
-				rocket.shipMovement(planetSystem, 5);
-				//GravityCalculation.computeGPlanets(planetSystem, 2);
+				landed=Landing.checkLanding(rocket, planetSystem, map);
+				if(landed){
+					animation.stop();
+				}
+				GravityCalculation.computeGPlanets(planetSystem, 20);
+				GravityCalculation.computeGShip(planetSystem, 20, rocket);
+				rocket.shipMovement(planetSystem, 20);
 				map.repaint();
 				shipStats.update();
-				planetInfo.update();
+				planetInfo.updateInfo();
 				rocket.burnFuel();
 				detectCollision();
-				
 			}
 			
 		});
-	
+		
 	}
 }

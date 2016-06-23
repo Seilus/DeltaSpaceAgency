@@ -1,11 +1,14 @@
 package pl.edu.pw.fizyka.pojava.OddzialDelta;
-	//holds information about the space ship as well as methods for making it move due to engine and gravity
-	//the movement is done by moving all the planets, as the ship is stationary in the center of the map
-
+	/**
+ * 
+ * @author KM
+ *holds information about the space ship as well as methods for making it move due to engine and gravity
+ *the movement is done by moving all the planets, as the ship is stationary in the center of the map
+ */
 public class Ship{
 	private int shipMassT;
 	private float fuelMassT;
-	private int forceOfEngineN;
+	private double forceOfEngineN;
 	//tangent of this angle informs of the direction of the ship
 	private double turningAngleDeg;
 	private double speedXkmByS;
@@ -19,7 +22,7 @@ public class Ship{
 	public Ship(double speedX, double speedY){
 		shipMassT=300;
 		fuelMassT=700;
-		forceOfEngineN=200000;
+		forceOfEngineN=Math.pow(2, 26);
 		speedXkmByS=speedX;
 		speedYkmByS=speedY;
 		engineToggle=false;
@@ -39,6 +42,10 @@ public class Ship{
 		return destination;
 	}
 	
+	public void setDestination(int destination ){
+		this.destination=destination;
+	}
+	
 	public void setThrottleValue(int throttle){
 		throttleValue=throttle;
 	}
@@ -55,7 +62,7 @@ public class Ship{
 	
 	public void burnFuel(){
 		if(engineToggle){
-			fuelMassT-=0.2*throttleValue/1000;
+			fuelMassT-=0.02*throttleValue/1000;
 		}
 		if(fuelMassT<=0){
 			engineToggle=false;

@@ -9,15 +9,17 @@ import java.awt.Insets;
 import java.io.IOException;
 
 import javax.swing.JFrame;
-
+	/**
+	 * 
+	 * @author KM
+	 *the game Frame, showing both the map and the HUD
+	 */
 public class GameWindow extends JFrame  {
-	//the game Frame, showing both the map and the HUD
 	private static final long serialVersionUID = 1L;
 	
 	Ship rocket;
 	GameMap map;
 	GameHUD hud;
-	
 	
 	
 	public GameWindow(GameMap map, GameHUD hud, Ship rocket) throws HeadlessException {
@@ -52,18 +54,16 @@ public class GameWindow extends JFrame  {
 
 	public static void main(String[] args) throws IOException {
 		
-		GravityCalculation gravityCalculation=new GravityCalculation();
 		LanguageSelectionEnglish englishLang=new LanguageSelectionEnglish();
 		LanguageSelectionPolski polishLang=new LanguageSelectionPolski();
+		HelpListener helpListener=new HelpListener(englishLang, polishLang);
 		LanguageChooserListener languageListener= new LanguageChooserListener (englishLang, polishLang);
-		GameStartListener startListener=new GameStartListener(languageListener, englishLang, polishLang,gravityCalculation);
+		GameStartListener startListener=new GameStartListener(languageListener, englishLang, polishLang);
 		MissionSelectionClass missionListener=new MissionSelectionClass();
-		HelpListener helpListener=new HelpListener(englishLang,polishLang);
-		MenuFrame menuFrame= new MenuFrame(startListener, languageListener,missionListener,helpListener);
-		menuFrame.setSize(640, 480); 
-		menuFrame.setVisible(true);
-		menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		MenuFrame t= new MenuFrame(startListener, languageListener,missionListener,helpListener);
+		t.setSize(640, 450); 
+		t.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		t.setVisible(true);
 	}
 			
 }

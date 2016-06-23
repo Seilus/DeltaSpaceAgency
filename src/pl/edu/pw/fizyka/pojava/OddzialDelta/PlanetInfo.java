@@ -8,44 +8,38 @@ import java.text.DecimalFormat;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
+/**
+ * 
+ * @author KM
+ *class displays information on destination planet in a text area in GameHUD
+ */
 public class PlanetInfo extends JPanel {
-	//class displays information on destination planet in a text area in GameHUD
+
 	
 	private static final long serialVersionUID = 1L;
-	LanguageChooserListener languageListener;
-	JTextArea planetInfo;
-	String game[];
-	String planets[];
-	GravityCalculation gravityCalculation;
-	MenuFrame menuFrame;
+
 	CelestialBody[] planetSystem;
-	double distance, distanceX, distanceY;
+	int destination;
+	double xDistanceToTarget, yDistanceToTarget;
+	JTextArea planetInfo;
 	DecimalFormat format;
-	int missionSelected;
+	String[] game;
+	String[] planets;
     void setNamePlanet(){
     	format=new DecimalFormat("#.##");
-    	planetInfo.setText("\n"+game[5]+" "+planets[missionSelected]+"\n"+game[6]+" "+format.format(distance)+"  "+"\n"+game[7]+
-				" "+format.format(distanceX)+"\n"+game[8]+" "+format.format(distanceY)+"\n");
-		
+		planetInfo.setText("\n"+game[5]+" "+planets[destination]+"\n"+game[6]+format.format(Math.sqrt(Math.pow(xDistanceToTarget, 2)+Math.pow(yDistanceToTarget, 2))-planetSystem[destination].getRadius())+"\n"+game[7]+format.format(Math.sqrt(Math.pow(planetSystem[destination].getSpeedX(), 2)+Math.pow(planetSystem[destination].getSpeedY(), 2)))+"\n"+game[8]+format.format(Math.sqrt(Math.pow(planetSystem[0].getX(), 2)+Math.pow(planetSystem[0].getY(), 2)))+"\n");
 	}
-   
-	
-	
-	
-	
-	public PlanetInfo(String game[],String planets[],GravityCalculation gravityCalculation,CelestialBody[] planetSystem,MenuFrame menuFrame) {
-		this.gravityCalculation=gravityCalculation;
+    
+    public void setDistance(){
+    	xDistanceToTarget=planetSystem[destination].getX();
+    	yDistanceToTarget=planetSystem[destination].getY();
+    }
+    
+	public PlanetInfo(CelestialBody[] planetSystem, String[] game, String[] planets, int destination) {
 		this.planetSystem=planetSystem;
 		this.game=game;
 		this.planets=planets;
-		this.menuFrame=menuFrame;
-		missionSelected=menuFrame.SelectedMission;
-		distance=gravityCalculation.getDistance(planetSystem,missionSelected);
-		distanceX=gravityCalculation.getDistanceX(planetSystem,missionSelected);
-		distanceY=gravityCalculation.getDistanceY(planetSystem,missionSelected);
-		
-		
+		this.destination=destination;
 		setLayout(new FlowLayout(2));
 		setBackground(Color.DARK_GRAY);
 	    planetInfo=new JTextArea(4, 1);
@@ -53,19 +47,21 @@ public class PlanetInfo extends JPanel {
 		planetInfo.setEditable(false);
 		Font shipFont = new Font("Verdana", Font.BOLD, 12);
 		planetInfo.setFont(shipFont);
+		planetInfo.setPreferredSize(new Dimension(220, 120));
 		planetInfo.setForeground(Color.WHITE);
-		//planetInfo.setText("\nName of nearest planet\nDistance to nearest planet\nX distance to planet\nY distance to planet\n ");
+		setDistance();
 		this.add(planetInfo);
-		
-		ShipRadar radar=new ShipRadar();
+		ShipRadar radar=new ShipRadar(planetSystem, destination);
 		Dimension radarPref=new Dimension(60, 60);
 		radar.setPreferredSize(radarPref);
 		this.add(radar);
 	}
-	public void update(){
-		distance=gravityCalculation.getDistance(planetSystem,missionSelected);
-		distanceX=gravityCalculation.getDistanceX(planetSystem,missionSelected);
-		distanceY=gravityCalculation.getDistanceY(planetSystem,missionSelected);
-		planetInfo.setText("\n"+game[5]+" "+planets[missionSelected]+"\n"+game[6]+" "+format.format(distance)+"   "+"\n"+game[7]+
-				" "+format.format(distanceX)+"\n"+game[8]+" "+format.format(distanceY)+"\n");	}
+	
+	public void updateInfo(){
+		setDistance();
+		setNamePlanet();
+	}
+	
+	
+	
 }	
